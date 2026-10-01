@@ -310,3 +310,14 @@ Bir zombi project oyunu istiyorum. Webde çalışacak grafikleri ise görselde a
 - Ping/performans: uzak zombiler uyur (90 m), snapshot uzamsal grid + paylaşılan görünümler, orjson gönderim, atışta hedef ön filtresi.
 - iteration_13: 17/17 yeni backend testi geçti; admin origin hatası düzeltildi ve panel elle doğrulandı.
 - Backlog: P0 deploy (50 ECU onayı bekleniyor) + lastzhood.fun bağlama; P1 200 oyunculu yük testi; P2 güçlü admin şifresi.
+
+
+## Son çalışma — Admin erişimi ve canlı API adresi
+- Kullanıcı: "admin paneline her tarayıcı ve ipden erişebileyim şifre ile giriş yapayım sadece." Mevcut şifreyi korumayı onayladı.
+- Kodda istemci IP/User-Agent bağı yoktu. `admin_auth.check_origin` yalnız ADMIN_ORIGIN ve ADMIN_PROXY_ORIGIN kabul ettiği için CORS'ta tanımlı www ve dış önizleme adreslerinin 403 verdiği yeniden üretildi.
+- Kontrol artık ADMIN_ORIGIN, ADMIN_PROXY_ORIGIN ve CORS_ORIGINS içindeki açık adresleri birlikte kabul ediyor (virgülle ayrılmış, boşluk/son eğik çizgi temizlenmiş). Şifre, HttpOnly/Secure cookie, oturum iptali ve CSRF korunuyor; yabancı/null/eksik Origin ve forwarded-host atlatması kabul edilmiyor. Ortam değişkenleri değiştirilmedi.
+- `/test_reports/iteration_14.json`: 18 backend kontrolü geçti; Chromium'da yanlış/doğru şifre, ayarlar, yeniden yüklemede oturum, çıkış doğrulandı. Çoklu API oturumları ve IP/User-Agent başlığı değişimi geçti; gerçek farklı ISP veya Firefox/WebKit doğrulanmadı. Rapordaki eksik logout test-id notu yanlış: AdminPage.jsx satır 39'da `admin-logout-button` zaten mevcut. Yeni hesap/şifre oluşturulmadı; boş test_credentials.md mevcut doğrulanmış şifre bilgisiyle tamamlandı.
+- Son kullanıcı isteği: Canlı Secrets ekranındaki REACT_APP_BACKEND_URL `https://utility-15.emergentapps.tr` yerine `https://lastzhood.fun` olsun; açık onay alındı. `/api` eklenmeyecek. Önizleme REACT_APP_BACKEND_URL korunacak.
+- Art arda yayın başlatıldı bildirimleri geldi; yayının bitişi ya da son kodun canlıya geçtiği doğrulanmadı. Önceki '50 ECU onayı bekleniyor' kaydı güncel durum olarak kullanılmamalı.
+- Production ayar adları, istenen değerle eşleşme, domain bağlantısı ve yayın durumu için salt okunur canlı kontrol gönderildi; yanıt `queued` (job_id 36262a58-3256-4f90-a1cc-2a4f43a6ea8a). Henüz canlı değer değiştirilmedi, yeniden yayın tetiklenmedi. Sonuç BEKLENİYOR; değiştirildi diye bildirme.
+- P0: Canlı API adresi kontrolü/değişikliği ve yeniden derlenen sürümün doğrulanması. P1/P2: Kullanıcının canlı gerçek cüzdan ödeme kontrolü, 200 oyuncu yük testi ve güçlü admin şifresi önceki backlog'da; bu istekte yapılmadı.

@@ -1,0 +1,41 @@
+{
+  "summary": "Iteration 14: Verified admin_auth.check_origin fix (union of ADMIN_ORIGIN + ADMIN_PROXY_ORIGIN + CORS_ORIGINS, whitespace/slash normalized, rejects empty/*/null/foreign/suffix-spoofed/XFH bypass) and confirmed password-only, client-independent sessions via public preview URL. 18/18 new backend tests pass. Full browser flow (Chromium) exercises /admin: wrong password rejected, correct password logs in, settings/status visible, reload persists session, LOG OUT clears session (frontend returns to login and /api/admin/me is 401).",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": [
+      {"screen": "/admin logout control", "issues": ["LOG OUT button lacks a stable data-testid (e.g. admin-logout-button); tests had to fall back to visible text. Not a defect, but makes automation brittle."]}
+    ]
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_iteration14_admin_origin_and_independence.py",
+    "/app/test_reports/pytest/iteration_14_admin_origin.xml"
+  ],
+  "action_items": [
+    "Optional: add data-testid=\"admin-logout-button\" to the LOG OUT control to firm up E2E coverage.",
+    "Optional: strip trailing slash from the incoming request Origin as well as env values in check_origin so hosts configured with/without a slash can't be bypassed by cosmetic variation. Current behavior: trailing-slash request Origin is treated as foreign and rejected (403); this is strict/safe, just worth documenting."
+  ],
+  "critical_code_review_comments": [
+    "admin_auth.check_origin now builds the allowlist from the union of ADMIN_ORIGIN, ADMIN_PROXY_ORIGIN, CORS_ORIGINS as comma-separated lists with .strip().rstrip('/') and excludes '', '*', 'null'. Clean, minimal, and avoids trusting X-Forwarded-Host. KeyError if any of those env keys is missing is fail-fast, which is acceptable but could be os.environ.get(..., '') if the deploy ever drops a key.",
+    "Login/refresh/logout all call check_origin; GET endpoints (me/settings/status) rely on cookie-only auth with no origin check -- correct for CSRF model (state-changing requests are origin-checked, HttpOnly SameSite=Strict cookies protect reads).",
+    "Rate limit is per fixed identifier 'admin:operator', so proxy IP rotation cannot split the bucket. Verified: 5x401 then 429 with Retry-After, cleanup unlocks within the same test. Tests isolate the live operator by resetting attempts in finally."
+  ],
+  "updated_files": [
+    "/app/backend/tests/test_iteration14_admin_origin_and_independence.py",
+    "/app/test_reports/iteration_14.json"
+  ],
+  "success_rate": {
+    "backend": "100% (18/18 passed in iteration_14_admin_origin.xml)",
+    "frontend": "100% of exercised flows on Chromium (wrong-pw rejection, correct-pw login, settings load, reload persistence, logout -> /me 401). Firefox/WebKit engines are NOT installed in this sandbox and were not exercised."
+  },
+  "test_credentials": "Admin password: 123123 (from /app/memory/test_credentials.md, bcrypt $2b$ hash in backend/.env unchanged).",
+  "seed_data_creation": "None persistent. Each test resets login_attempts for 'admin:operator' before and after; settings mutation test restores original time_of_day in finally.",
+  "retest_needed": false,
+  "should_main_agent_self_test": false,
+  "context_for_next_testing_agent": "test_iteration14_admin_origin_and_independence.py uses REACT_APP_BACKEND_URL from frontend/.env and the public preview URL -- Origin fix is proven live. Allowed origins list is derived from backend/.env at test time, so adding/removing hosts in CORS_ORIGINS/ADMIN_ORIGIN/ADMIN_PROXY_ORIGIN auto-expands coverage. Older test_admin_zombie_population_api.py still points at localhost:8001 (comment flag) -- can now be re-pointed at REACT_APP_BACKEND_URL since origin fix is deployed in-preview. Simulated-IP coverage only; real multi-ISP coverage still cannot be proven from inside the cluster.",
+  "rca of the issue": "Original 403: check_origin allowed only the two literal values ADMIN_ORIGIN and ADMIN_PROXY_ORIGIN. The real request mix in production includes apex (lastzhood.fun), www.lastzhood.fun, the public preview URL (utility-15.preview.emergentagent.com) and the Cloudflare worker rewrite (utility-15.cluster-12.preview.emergentcf.cloud). Fix combines all three env vars (comma-split, slash/whitespace normalized) and still refuses empty/*/null, keeping CSRF strict. Verified: all four origins from env succeed; empty, '*', 'null', 'https://evil.example.com', 'https://lastzhood.fun.evil.example' and X-Forwarded-Host spoof all 403."
+}

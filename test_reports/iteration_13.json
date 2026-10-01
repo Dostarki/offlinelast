@@ -1,0 +1,57 @@
+{
+  "summary": "Validated the new fixed server-wide zombie population and ping-fix changes. New backend unit test suite (test_zombie_population_focus.py, 14 tests) and a focused live admin API suite (test_admin_zombie_population_api.py, 3 tests) all pass. Home page loads. Discovered one critical environment-level bug: admin login at the public preview URL returns 403 because the Cloudflare preview worker rewrites Origin to an internal host that is not in ADMIN_PROXY_ORIGIN, so the user cannot reach the new ZOMBIE POPULATION panel through /admin.",
+  "backend_issues": {
+    "critical": [
+      {
+        "endpoint": "POST /api/admin/login (public preview URL)",
+        "issue": "Cloudflare preview worker rewrites the browser Origin to 'https://utility-15.cluster-12.preview.emergentcf.cloud' before forwarding to the backend. ADMIN_PROXY_ORIGIN in backend/.env is 'https://utility-15.preview.emergentagent.com' and so check_origin() rejects every real browser login with 403 'Invalid request origin.' Reproduced in Playwright on /admin and via curl. Backend internal calls (localhost:8001) work.",
+        "priority": "CRITICAL"
+      }
+    ],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [
+      {
+        "component": "AdminPage/login",
+        "issue": "Login always shows 'Invalid request origin.' on the preview URL (same root cause as critical backend issue). The admin ZOMBIE POPULATION panel (data-testid=admin-zombie-density / admin-zombie-count-input / admin-zombie-count-apply) is therefore unreachable in the preview env until the origin allowlist is widened.",
+        "selector": "[data-testid=\"admin-zombie-count-input\"]",
+        "priority": "CRITICAL"
+      }
+    ],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_zombie_population_focus.py",
+    "/app/backend/tests/test_admin_zombie_population_api.py",
+    "/app/test_reports/pytest/iteration_13_zombie_population.xml",
+    "/app/test_reports/pytest/iteration_13_admin_api.xml"
+  ],
+  "action_items": [
+    "Widen admin Origin check: either accept a comma-separated ADMIN_PROXY_ORIGIN list that includes 'https://utility-15.cluster-12.preview.emergentcf.cloud' or match against X-Forwarded-Host, so admin login works through the Cloudflare preview worker. Without this the user still cannot adjust zombie population from the preview /admin page.",
+    "Once origin is fixed, run the Playwright probe already drafted here against /admin: fill admin-zombie-count-input, click admin-zombie-count-apply, and verify admin-metric-zombies trends toward the new target."
+  ],
+  "critical_code_review_comments": [
+    "game_settings.zombie_target correctly collapses to 0 when density is 'off', and apply_settings routes through population.trim_population for immediate reductions and resets next_population_at for staggered growth. Looks solid.",
+    "population.maintain_population picks the least-populated of 64 regions, caps per-tick spawns at 40 and enforces a 32m player buffer; strongly limits ping impact.",
+    "zombies.update_zombies early-outs when no living target is within ACTIVE_RANGE (90m) and no remembered target exists, so idle populations do not pay per-tick cost. Confirmed by test_dormant_zombies_do_not_move.",
+    "engine.Game.update no longer calls spawn_zombies per player; engine.shared_snapshot builds per-tick actors/player_grid/zombie_grid and snapshot reuses them via near(...) + zombie_view cache, which should keep tick_ms low. Measured median tick+snapshot ~<50ms with 600 zombies + 3 players in unit test environment.",
+    "admin_auth.check_origin uses a hard-coded two-entry allowlist from env; add a comma-separated list or pattern support so proxy/CDN rewrites can be allowlisted without .env churn. This is the single blocker for admin usage on the preview URL."
+  ],
+  "updated_files": [
+    "/app/backend/tests/test_zombie_population_focus.py",
+    "/app/backend/tests/test_admin_zombie_population_api.py",
+    "/app/test_reports/iteration_13.json"
+  ],
+  "success_rate": {
+    "backend": "100% (17/17 new tests passing: 14 unit + 3 admin API)",
+    "frontend": "Home loads; /admin login blocked by origin bug — admin UI panels not verified end-to-end"
+  },
+  "test_credentials": "Admin password: 123123. Admin Origin allowlist (env): https://lastzhood.fun, https://utility-15.preview.emergentagent.com. Preview worker rewrites to https://utility-15.cluster-12.preview.emergentcf.cloud which is NOT allowlisted.",
+  "seed_data_creation": "None persistent. Live admin test transiently updates game settings and restores density=normal / zombie_count=250 before exit.",
+  "retest_needed": true,
+  "should_main_agent_self_test": true,
+  "context_for_next_testing_agent": "Backend behavior of fixed server-wide zombie population is well-covered by test_zombie_population_focus.py (no per-player spawning, maintain_population tops up & is rate-limited & respects 32m buffer, apply_settings trims immediately on count reduction, 'off' clears, dormant zombies skipped, snapshot includes zombies in view, tick_ms stays low). test_admin_zombie_population_api.py covers PUT /api/admin/settings for zombie_count including strict int bounds and density='off' clearing. Admin API tests run against http://localhost:8001 to bypass the Cloudflare worker Origin rewrite — once ADMIN_PROXY_ORIGIN is widened, change INTERNAL_URL back to REACT_APP_BACKEND_URL. test_iteration6_game_unit_focus.py still contains per-player spawn density/cadence asserts that are obsolete under the new model and should be updated/removed when touched next.",
+  "rca of the issue": "Admin login 403 at preview URL: Cloudflare preview worker (cf-worker: preview.emergentagent.com) rewrites the incoming Origin header to the internal host 'https://utility-15.cluster-12.preview.emergentcf.cloud' before forwarding to FastAPI. backend/admin_auth.check_origin only allows the two env values ADMIN_ORIGIN and ADMIN_PROXY_ORIGIN, which do not include the rewritten host. Mitigation: expand check_origin to accept a comma-separated allowlist OR match X-Forwarded-Host, then add the forwarded host to the list; alternatively, change the Cloudflare worker to preserve the original Origin."
+}

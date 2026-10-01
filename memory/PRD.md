@@ -302,3 +302,11 @@ Bir zombi project oyunu istiyorum. Webde çalışacak grafikleri ise görselde a
 - P0: Kod düzeltmesi dar kontrollerden geçti; canlı sürümde aynı cüzdanın mevcut ödemeden erişiminin tanınması henüz doğrulanmadı. Tekrar ödeme istenmemeli.
 - P1: Önceki performans/kapasite işleri bu talebin kapsamı dışında ve ertelendi.
 - P2 / öneri: İleride ödeme siparişi ile erişim kaydı tutarlılığı için otomatik uyarı; uygulanmadı.
+
+## 2026-10-01 — lastzhood1dolarfix kurulumu + sabit zombi nüfusu
+- Repo https://github.com/Dostarki/lastzhood1dolarfix /app'e alındı; .env'ler yeniden oluşturuldu (Reown ID kullanıcıdan, chain 4663, treasury 0x45d9…E334, admin şifresi 123123).
+- ADMIN_ORIGIN=https://lastzhood.fun; ADMIN_PROXY_ORIGIN önizleme Cloudflare origin'i (utility-15.cluster-12.preview.emergentcf.cloud). Prod'da ADMIN_PROXY_ORIGIN/CORS prod adresine göre ayarlanmalı.
+- Zombi nüfusu artık sunucu genelinde sabit: admin `zombie_count` (0–600) + hazır ayarlar (off 0/low 120/normal 250/high 450). 64 bölgeye (200 m) eşit dağıtılır, oyuncu giriş/yeniden doğumu zombi eklemez. `backend/population.py`.
+- Ping/performans: uzak zombiler uyur (90 m), snapshot uzamsal grid + paylaşılan görünümler, orjson gönderim, atışta hedef ön filtresi.
+- iteration_13: 17/17 yeni backend testi geçti; admin origin hatası düzeltildi ve panel elle doğrulandı.
+- Backlog: P0 deploy (50 ECU onayı bekleniyor) + lastzhood.fun bağlama; P1 200 oyunculu yük testi; P2 güçlü admin şifresi.

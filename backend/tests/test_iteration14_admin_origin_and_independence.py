@@ -10,14 +10,24 @@ Covers:
 
 All tests run against the public preview URL (frontend/.env REACT_APP_BACKEND_URL).
 """
+import asyncio
 import os
 import time
 from pathlib import Path
+from types import SimpleNamespace
 
+import bcrypt
 import pytest
 import requests
 from dotenv import dotenv_values
+from fastapi import FastAPI, HTTPException
+from fastapi.testclient import TestClient
+from mongomock_motor import AsyncMongoMockClient
 from pymongo import MongoClient
+
+import sys
+sys.path.insert(0, '/app/backend')
+from admin_auth import auth_routes, check_origin, setup_admin  # noqa: E402
 
 
 def _public_base() -> str:

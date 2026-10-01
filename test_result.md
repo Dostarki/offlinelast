@@ -101,3 +101,31 @@
 #====================================================================================================
 # Testing Data - Main Agent and testing sub agent both should log testing data below this section
 #====================================================================================================
+
+
+## Current task — password-only admin from any browser/IP
+user_problem_statement: "admin paneline her tarayıcı ve ipden erişebileyim şifre ile giriş yapayım sadece. Onay: mevcut şifre korunsun."
+backend:
+  - task: "Admin site origins consistent with CORS without IP/browser binding"
+    implemented: true
+    working: "NA"
+    file: "backend/admin_auth.py"
+    needs_retesting: true
+    status_history:
+      - agent: "main"
+        comment: "Reproduced www and public preview origins returning 403 in check_origin despite being present in CORS_ORIGINS. Combine explicit env origin lists; preserve password, secure cookies, CSRF, server sessions and attempt limiting. No arbitrary origin/host trust."
+frontend:
+  - task: "Independent browser login, persistence, settings save, logout"
+    implemented: true
+    working: "NA"
+    file: "frontend/src/components/AdminPage.jsx (unchanged)"
+    needs_retesting: true
+test_plan:
+  current_focus:
+    - "Origin www/apex/preview/proxy accept; missing/null/foreign/spoofed reject"
+    - "Independent clients/IP simulations, multi-session login/logout isolation"
+    - "Public preview browser login, save/restore, refresh/logout, unauthorized rejection"
+  test_all: false
+agent_communication:
+  - agent: "main"
+    message: "Read auth_testing.md and memory/test_credentials.md. Narrow auth-only verification; no game load test or payments. Prefer isolated DB for rate-limit tests to avoid locking user. Earlier iteration_13 population tests are not this scope. Do not claim live deployment verification."

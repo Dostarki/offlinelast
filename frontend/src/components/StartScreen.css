@@ -3,6 +3,7 @@
 .start-banner{position:absolute;inset:0;z-index:-1;display:grid;place-items:center}
 .start-banner img{display:block;width:100%;height:100%;object-fit:cover;object-position:center;opacity:.9}
 .start-title{position:absolute;top:5%;left:16px;right:16px;text-align:center;color:#f3f0df;text-shadow:0 2px 12px #24342ee6}
+.start-docs-link{position:absolute;top:24px;left:24px;z-index:2;display:flex;align-items:center;gap:8px;min-height:44px;padding:10px 12px;color:#ebede5;background:#141b16d9;border:1px solid #c8d6a044;font:11px 'JetBrains Mono',monospace;text-decoration:none;transition:color .2s,border-color .2s,background-color .2s}.start-docs-link:hover{color:#c8d6a0;border-color:#c8d6a0;background:#1c281f}.start-docs-link:focus-visible{outline:2px solid #c8d6a0;outline-offset:4px}@media(max-width:767px){.start-docs-link{top:14px;left:14px;font-size:10px;padding:8px}}
 .start-title>span{font:10px 'JetBrains Mono',monospace;letter-spacing:0}
 .start-title h1{font:400 60px/.95 'Bebas Neue',sans-serif;margin-top:5px;letter-spacing:0}
 .intro-start-button{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:268px!important;height:68px!important;padding:0 30px!important;background:#15251ae8!important;border:1px solid #d3dfbb!important;border-radius:2px!important;box-shadow:0 8px 30px #10201455!important;color:#eff4e5!important;font:500 27px 'Barlow Condensed',sans-serif!important;transition:background-color .2s,border-color .2s,transform .2s!important}

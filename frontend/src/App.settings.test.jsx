@@ -1,9 +1,10 @@
 import { act } from 'react';
 import { createRoot } from 'react-dom/client';
 import { PREFERENCES_KEY } from './game/preferences';
-import { GameApp } from './App';
+import App, { GameApp } from './App';
 
-jest.mock('react-router-dom', () => ({ BrowserRouter: ({ children }) => children, useLocation: () => ({ pathname: '/settings' }), useNavigate: () => jest.fn() }), { virtual: true });
+jest.mock('react-router-dom', () => ({ BrowserRouter: ({ children }) => children, useLocation: jest.fn(() => ({ pathname: '/settings' })), useNavigate: () => jest.fn() }), { virtual: true });
+jest.mock('./components/DocsPage', () => () => <div data-testid="public-guide" />);
 jest.mock('@rainbow-me/rainbowkit', () => ({
   useConnectModal: () => ({ connectModalOpen: false }),
   useAccountModal: () => ({ accountModalOpen: false }),
@@ -38,8 +39,21 @@ const flush = () => act(async () => { await Promise.resolve(); await Promise.res
 describe('GameApp settings persistence', () => {
   let container, root, fetchMock;
   const mount = () => act(() => root.render(<GameApp />));
+  beforeEach(() => { require('react-router-dom').useLocation.mockReturnValue({ pathname: '/settings' }); });
   beforeEach(() => { global.IS_REACT_ACT_ENVIRONMENT = true; rendererInstances.length = 0; GameRenderer.mockImplementation(function GameRendererMock(container, world, error, onZoomChange) { const instance = { setQuality: jest.fn(), setZoom: jest.fn(), setMode: jest.fn(), setBlocked: jest.fn(), dispose: jest.fn(), onZoomChange }; rendererInstances.push(instance); return instance; }); audio.preload.mockResolvedValue(undefined); audio.sync.mockClear(); localStorage.clear(); container = document.createElement('div'); document.body.appendChild(container); root = createRoot(container); fetchMock = jest.fn(url => Promise.resolve({ ok: true, json: () => Promise.resolve(url.includes('/world') ? { seed: 1 } : { online: 0 }) })); global.fetch = fetchMock; });
   afterEach(() => { act(() => root.unmount()); container.remove(); });
+
+  it('routes public docs without starting the game renderer, world requests or audio preload', async () => {
+    const { useLocation } = require('react-router-dom');
+    useLocation.mockReturnValue({ pathname: '/docs' });
+    GameRenderer.mockClear(); audio.preload.mockClear();
+    await act(async () => root.render(<App />));
+    expect(container.querySelector('[data-testid="public-guide"]')).not.toBeNull();
+    expect(GameRenderer).not.toHaveBeenCalled();
+    expect(fetchMock).not.toHaveBeenCalled();
+    expect(audio.preload).not.toHaveBeenCalled();
+    useLocation.mockReturnValue({ pathname: '/settings' });
+  });
 
   it('persists real settings controls, reapplies them on remount, and ignores a stale world response', async () => {
     let resolveWorld;

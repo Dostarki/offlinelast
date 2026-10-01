@@ -1,59 +1,82 @@
 {
-  "component_name": "OffgameMarketModal",
-  "component_path": "/app/frontend/src/components/OffgameMarketModal.jsx",
-  "typography": {
-    "headings": "Retain existing Bebas Neue and Barlow Condensed.",
-    "body": "Retain existing JetBrains Mono and Barlow."
-  },
-  "colors": {
-    "pack_field": "Olive drab and raw steel",
-    "pack_supply": "Charcoal, faded olive, brass",
-    "pack_operator": "Deep bronze, gunmetal, gold",
-    "pack_outpost": "Dark maroon, oxidized red, hazard accents",
-    "background_match": "#18221b"
-  },
-  "visual_enhancers": {
-    "shadows": "Apply `filter: drop-shadow(0 12px 16px rgba(0,0,0,0.6))` to the newly added `<img>` elements to give them tactile physical presence.",
-    "hover_effects": "On card hover (`.ogm-package-card:hover`), subtly scale the case image by 1.05x using a smooth cubic-bezier transition. This adds a premium, interactive feel."
-  },
-  "grids": "Retain existing `.ogm-packages-grid` and `.ogm-crate-mark` container definitions. Do not break the grid flow.",
-  "layouts": "To ensure cases are fully visible on both the small package cards (90x92px) and the larger detail preview (78x72px), use `width: 85%; height: 85%; object-fit: contain;` on the `<img>`. Center them with Flexbox or Grid.",
-  "motion": "Scale entrance micro-animation. Hover state should subtly enlarge the case and slightly brighten its drop shadow.",
-  "accessibility": "Ensure every injected `<img>` has an appropriate `alt` attribute (e.g., `alt=\"Field Package Case\"`). Include `data-testid` on the image tags to satisfy automated testing requirements.",
-  "media": {
-    "3d_libraries": "None. We are replacing the wireframe SVG with static 2D renders (AI generated).",
-    "image_generation_prompts": [
-      {
-        "sku": "pack_field",
-        "description": "Basic $2 Field Package",
-        "prompt": "3D render of a single brutalist military surplus field ammo crate, isometric angle, isolated on a pure #18221b background. Matte olive-drab resin mixed with raw stamped steel. Utilitarian, asymmetrical clasps. Scuffed edges. No text. Cinematic lighting, macro photography style, 85mm lens, high tension contrast."
-      },
-      {
-        "sku": "pack_supply",
-        "description": "Standard $4 Supply Package",
-        "prompt": "3D render of a single tactical supply lockbox, isometric angle, isolated on a pure #18221b background. Cold War industrial design meets modern aerospace. Dark charcoal and faded olive colors. Machined brass latches with a dull patina. Thick rubber gaskets. No text. Soft ambient studio light with a harsh gold rim light. Photorealistic, 8k."
-      },
-      {
-        "sku": "pack_operator",
-        "description": "Premium $6 Operator Package",
-        "prompt": "3D render of a high-end private military operator case, isometric angle, isolated on a pure #18221b background. Deep bronze and gunmetal tones. Mix of matte ballistic nylon texture and milled titanium. Complex, asymmetric locking dials in brushed gold. No text. Minimalist but aggressive silhouette. Studio lighting, sharp shadows."
-      },
-      {
-        "sku": "pack_outpost",
-        "description": "Elite $10 Outpost Package",
-        "prompt": "3D render of a massive command outpost armory vault case, isometric angle, isolated on a pure #18221b background. Dark maroon and oxidized steel-red finish. Brutalist architecture influence with heavy recessed blast-door latches. Asymmetrical painted hazard markings. No text. Intimidating and heavy, highly detailed, cinematic rim lighting."
-      }
+  "project_name": "Last Z Hood - Docs Drop-in Integration",
+  "app_type": "gaming_web_app",
+  "theme": "dark",
+  "design_philosophy": {
+    "core_principle": "Minimal preservation & seamless integration. Maintain existing survival/gaming theme and existing wallet/auth features while introducing the /docs route and Docs buttons smoothly.",
+    "anti_patterns": [
+      "No radical layout overhauls or changing existing HUD/StartScreen styles.",
+      "Do not replace App.js/StartScreen.jsx completely from stale ZIP copies.",
+      "Do not obscure essential navigation or wallet controls."
     ]
   },
+  "typography": {
+    "heading_font": "Barlow Condensed, Rajdhani, Orbitron, sans-serif",
+    "body_font": "Inter, Roboto, sans-serif",
+    "code_font": "JetBrains Mono, Source Code Pro, monospace",
+    "hierarchy": {
+      "h1": "text-3xl sm:text-4xl lg:text-5xl font-extrabold uppercase tracking-wide",
+      "h2": "text-2xl sm:text-3xl font-bold tracking-tight text-amber-400",
+      "h3": "text-xl sm:text-2xl font-semibold text-slate-200",
+      "body": "text-base text-slate-300 leading-relaxed",
+      "small_label": "text-xs font-mono uppercase tracking-widest text-slate-400"
+    }
+  },
+  "colors": {
+    "background": "#0b0f19",
+    "surface": "#111827",
+    "surface_border": "#1f2937",
+    "primary": "#f59e0b",
+    "primary_hover": "#d97706",
+    "accent": "#ef4444",
+    "text_primary": "#f3f4f6",
+    "text_secondary": "#9ca3af",
+    "text_muted": "#6b7280"
+  },
+  "layout_and_navigation": {
+    "docs_route": "/docs",
+    "header_navigation": {
+      "desktop": "Include Docs navigation link next to standard upper nav controls.",
+      "start_screen": "Add a dedicated standard styled button 'Docs' or 'Field Guide' on StartScreen pointing to /docs.",
+      "docs_page": "In DocsPage, preserve left sidebar chapter navigation, top search bar, and main chapter viewport."
+    },
+    "responsive_rules": {
+      "mobile": "Provide mobile-friendly chapter selection dialog/drawer on /docs route.",
+      "max_heights": "Ensure long document scrollable area does not break main viewport."
+    }
+  },
+  "component_guidelines": {
+    "DocsPage": {
+      "path": "frontend/src/components/DocsPage.jsx",
+      "css_path": "frontend/src/components/DocsPage.css",
+      "features": [
+        "11-chapter survival field guide display",
+        "Interactive chapter switching & search input",
+        "Deep linking via chapter queries or URL hashes",
+        "Mobile chapter select dialog"
+      ]
+    },
+    "StartScreen": {
+      "path": "frontend/src/components/StartScreen.jsx",
+      "css_path": "frontend/src/components/StartScreen.css",
+      "guidelines": "Add Docs entry button while maintaining current background, wallet login, and game entry workflow."
+    }
+  },
+  "testing_attributes": {
+    "data_testids": {
+      "docs_nav_link": "nav-docs-link",
+      "start_docs_button": "start-docs-button",
+      "docs_search_input": "docs-search-input",
+      "docs_chapter_item": "docs-chapter-item",
+      "docs_content_container": "docs-content-container",
+      "docs_mobile_menu_trigger": "docs-mobile-menu-trigger"
+    }
+  },
   "instructions_to_main_agent": [
-    "CRITICAL: Do NOT alter any Wagmi, Ethereum, pricing, or layout logic. Your ONLY task is replacing the SVG wireframe cubes with new static image assets.",
-    "STEP 1: Use your image-generation tool to generate 4 square assets using the exact prompts provided in `media.image_generation_prompts`.",
-    "STEP 2: The prompts request a `#18221b` background. If the resulting images have a solid dark background instead of transparency, you MUST update `.ogm-crate-mark` in `OffgameMarketModal.css` to use that exact solid background color (e.g., `background: #18221b;`) instead of its current `linear-gradient` to ensure the image blends seamlessly without a visible bounding box.",
-    "STEP 3: Save these images into a sensible static local assets folder (e.g., `frontend/src/assets/crates/`).",
-    "STEP 4: In `OffgameMarketModal.jsx`, replace the `<PackageCrate sku={sku} />` SVG component with a new functional component or raw `<img>` tag that maps the `sku` to the correct imported image.",
-    "STEP 5: Add a new CSS class for the image, e.g., `.ogm-package-img`, setting `width: 85%; height: 85%; object-fit: contain; z-index: 1; position: relative; transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);`.",
-    "STEP 6: Add hover logic in `OffgameMarketModal.css`: `.ogm-package-card:hover .ogm-package-img { transform: scale(1.08) translateY(-2px); }`."
-  ],
-  "UNIVERSAL GUIDELINES FOR MAIN AGENT": "Do not center align the app container. No generic gradients. Keep dark tactical aesthetic consistent. Do not use AI emojis in code or UI. Ensure all elements have `data-testid` attributes. Always use physical, tactile design references instead of typical 'sci-fi slop'.",
-  "GENERAL UI UX DESIGN GUIDELINES": "Maintain optical alignment over geometrical alignment. Keep the aesthetic dark, tactical, and grounded. Micro-animations (like the subtle scale on hover) add a premium tactile feel to the interface without breaking flow. Ensure contrast ratios remain accessible. Apply tight letter spacing for headings and generous padding inside containers."
+    "The user's uploaded DocsPage.css is authoritative for visual design: keep its Barlow/Barlow Condensed/JetBrains Mono fonts and olive/ink/coral palette, not the generic typography/color suggestions above. Preserve the uploaded English content.",
+    "Ensure DocsPage.jsx and DocsPage.css are cleanly placed in frontend/src/components/",
+    "Add route /docs in App.js without breaking wallet authorization or existing routes",
+    "Add Docs links on upper nav bar and StartScreen landing area",
+    "Preserve existing StartScreen wallet logic and main game layout"
+  ]
 }

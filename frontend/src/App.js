@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { BrowserRouter, useLocation, useNavigate } from 'react-router-dom';
 import { useConnectModal, useAccountModal, useChainModal } from '@rainbow-me/rainbowkit';
-import { Biohazard, Settings2, Trophy, Volume2, VolumeX, Crosshair, ArrowUpRight, Radio, Maximize2 } from 'lucide-react';
+import { Biohazard, BookOpen, Settings2, Trophy, Volume2, VolumeX, Crosshair, ArrowUpRight, Radio, Maximize2 } from 'lucide-react';
 import { Toaster } from './components/ui/sonner';
 import { Button } from './components/ui/button';
 import { Lobby } from './components/Lobby';
@@ -10,6 +10,7 @@ import { BossMap } from './components/BossMap';
 import { BossHUD } from './components/BossHUD';
 import { GamePanels } from './components/GamePanels';
 import { StartScreen } from './components/StartScreen';
+import DocsPage from './components/DocsPage';
 import AdminPage from './components/AdminPage';
 import { Inventory } from './components/Inventory';
 import { StatsPanel } from './components/StatsPanel';
@@ -159,6 +160,7 @@ export function GameApp() {
           <button className={!panel ? 'active' : ''} onClick={() => navigate('/loadout')} data-testid="nav-play"><Crosshair size={14} /> CHARACTER</button>
           <button className={panel === 'leaderboard' ? 'active' : ''} onClick={() => navigate('/leaderboard')} data-testid="nav-leaderboard"><Trophy size={14} /> LEADERBOARD</button>
           <button className={panel === 'settings' ? 'active' : ''} onClick={() => navigate('/settings')} data-testid="nav-settings"><Settings2 size={14} /> SETTINGS</button>
+          <button className="nav-docs" onClick={() => navigate('/docs')} data-testid="nav-docs" title="Field Guide" aria-label="Docs — Field Guide"><BookOpen size={14} aria-hidden="true" /> Docs</button>
         </nav>
         <div className="topbar-right">
           <WalletGate testIdPrefix="header-wallet" />
@@ -206,8 +208,10 @@ export function GameApp() {
 }
 function AppRoutes() {
   const location = useLocation(), navigate = useNavigate();
-  useEffect(() => { document.title = 'LastZHood — Westfall'; document.documentElement.lang = 'en'; }, []);
+  const isDocs = location.pathname === '/docs' || location.pathname === '/docs/';
+  useEffect(() => { document.title = isDocs ? 'Westfall Field Guide — LastZHood' : 'LastZHood — Westfall'; document.documentElement.lang = 'en'; }, [isDocs]);
   if (location.pathname.startsWith('/admin')) return <AdminPage />;
+  if (isDocs) return <DocsPage />;
   if (process.env.NODE_ENV === 'development' && location.pathname === '/__dev/craft-fixture') return <DevCraftFixture />;
   if (process.env.NODE_ENV === 'development' && location.pathname === '/__dev/minimap-fixture') return <DevMinimapFixture />;
   if (location.pathname === '/') return <StartScreen onStart={() => navigate('/loadout')} />;

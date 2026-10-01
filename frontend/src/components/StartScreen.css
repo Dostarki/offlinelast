@@ -1,0 +1,13 @@
+.start-screen{position:fixed;inset:0;display:grid;place-items:center;isolation:isolate;background:#151912;overflow:hidden}
+.start-screen:before{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;background:linear-gradient(0deg,#10140fee,transparent 24%,transparent 82%,#10140fdd)}
+.start-banner{position:absolute;inset:0;z-index:-1;display:grid;place-items:center}
+.start-banner img{display:block;width:100%;height:100%;object-fit:cover;object-position:center;opacity:.9}
+.start-title{position:absolute;top:5%;left:16px;right:16px;text-align:center;color:#f3f0df;text-shadow:0 2px 12px #24342ee6}
+.start-title>span{font:10px 'JetBrains Mono',monospace;letter-spacing:0}
+.start-title h1{font:400 60px/.95 'Bebas Neue',sans-serif;margin-top:5px;letter-spacing:0}
+.intro-start-button{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:268px!important;height:68px!important;padding:0 30px!important;background:#15251ae8!important;border:1px solid #d3dfbb!important;border-radius:2px!important;box-shadow:0 8px 30px #10201455!important;color:#eff4e5!important;font:500 27px 'Barlow Condensed',sans-serif!important;transition:background-color .2s,border-color .2s,transform .2s!important}
+.intro-start-button:hover{background:#354633!important;border-color:#f0f4df!important;transform:translate(-50%,calc(-50% - 2px))}
+.intro-start-button:active{transform:translate(-50%,calc(-50% + 1px))}.intro-start-button:focus-visible{outline:2px solid #e1eccb;outline-offset:7px}
+.start-market-button{position:absolute;bottom:2%;left:50%;transform:translateX(-50%);z-index:2;display:flex;align-items:center;gap:8px;border:0;background:transparent;color:#e4edd8;font:600 12px 'JetBrains Mono',monospace;padding:10px 14px;cursor:pointer;text-shadow:0 1px 5px #000}.start-market-button:hover{color:#c8d6a0}.start-market-button:focus-visible{outline:2px solid #e1eccb;outline-offset:2px}
+@media(max-width:767px){.start-title{top:7%}.start-title h1{font-size:48px}.intro-start-button{width:234px!important;height:60px!important;font-size:25px!important}}
+@media(max-height:520px){.start-title{top:4%}.start-title h1{font-size:36px}.intro-start-button{height:48px!important;font-size:22px!important}}

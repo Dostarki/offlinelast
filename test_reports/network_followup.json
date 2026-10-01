@@ -1,0 +1,25 @@
+{
+  "date": "2026-09-26",
+  "base_report": "/app/test_reports/iteration_4.json",
+  "resolved": [
+    "Mobil bağlantı yazısı 10px, ayrıntı 9px ve yüksek kontrast/text-shadow ile okunabilir hale getirildi.",
+    "Normal Uvicorn/websockets ConnectionClosedOK kapanışında yazıcı görevi hatası yakalanır; özel regresyon eklendi.",
+    "Az örnekli RTT maksimumunun p95 diye raporlanması düzeltildi. İlk rapordaki 87.93ms p95 değil örnek maksimumudur."
+  ],
+  "verification": {
+    "pytest": "6/6 PASS; /app/test_reports/network-retest.xml",
+    "worker_snapshot_movement": "PASS; node /app/tests/frontend_network_worker_focus.cjs",
+    "build": "PASS; /app/test_reports/network-build.log",
+    "new_backend_errors": [],
+    "desktop_viewport": "1920x800; canlı oyun görünür, yatay taşma yok",
+    "mobile_viewport": "390x844; canlı oyun görünür, yatay taşma yok, bağlantı/skor çakışması yok",
+    "mobile_connection_bottom": 86.5,
+    "mobile_score_top": 90
+  },
+  "limitations": [
+    "Kullanıcının sürekli 300ms üzeri RTT'si test rotasında tekrar üretilemedi; kullanıcı cihazında onay bekleniyor.",
+    "Yazılımsal WebGL test ortamındaki düşük FPS, donanım performansı için referans değildir; gerçek cihaz doğrulaması bekleniyor.",
+    "200 aktif oyuncu ve kapsamlı çatışma yükü doğrulanmadı."
+  ],
+  "mocked_product_apis": false
+}

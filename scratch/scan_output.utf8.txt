@@ -1,0 +1,325 @@
+=== frontend\src\components\AlliancePanel.jsx (1 matches) ===
+  L22: {!leader && <p className="alliance-note">Only the alliance leader can change friendly fire.</p>}
+
+=== frontend\src\components\CraftPanel.css (2 matches) ===
+  L294: .craft-recipe-card.can-craft {
+  L298: .craft-recipe-card.can-craft:hover {
+
+=== frontend\src\components\CraftPanel.jsx (17 matches) ===
+  L195: { id: 'c_fab_1', source: 'fabric_t1', target: 'fabric_t2', name: 'Balistik Kumaş → Aramid Lif', cost: 10, tier: 1 },
+  L198: { id: 'c_plt_1', source: 'plate_t1', target: 'plate_t2', name: 'Çelik Plaka → Seramik Plaka', cost: 10, tier: 1 },
+  L201: { id: 'c_bnd_1', source: 'binding_t1', target: 'binding_t2', name: 'Naylon Kayış → Takviyeli Bağlantı', cost: 10, tier: 1 },
+  L202: { id: 'c_bnd_2', source: 'binding_t2', target: 'binding_t3', name: 'Takviyeli Bağlantı → Titanyum Bağlantı', cost: 30, tier: 2 },
+  L207: { id: 'c_cal_1', source: 'calibration_t1', target: 'calibration_t2', name: 'T1 Kalibrasyon → T2 Kalibrasyon', cost: 30, tier: 1 },
+  L208: { id: 'c_cal_2', source: 'calibration_t2', target: 'calibration_t3', name: 'T2 Kalibrasyon → T3 Kalibrasyon', cost: 90, tier: 2 },
+  L505: <span className={levelMet ? 'met' : 'missing'}>LVL {item.levelReq} (SİZ: {playerLevel})</span>
+  L506: <span className={goldMet ? 'met' : 'missing'}>{reqGold} ALTIN</span>
+  L528: {isOwned ? 'ZATEN ÜRETİLDİ' : !levelMet ? 'SEVİYE YETERSİZ' : !goldMet ? 'YETERSİZ ALTIN' : partsMet ? 'EKİPMANI ÜRET (+0)' : 'MALZEME EKSİK'}
+  L542: <p className="empty-craft-note">Henüz sahip olduğunuz bir donanım yok. Önce "CRAFT EQUIPMENT" sekmesinden donanım üretin.</p>
+  L605: <span className={levelMet ? 'met' : 'missing'}>GEREKLİ LVL {reqLevel} (SİZ: {playerLevel})</span>
+  L606: <span className={goldMet ? 'met' : 'missing'}>{reqGold} ALTIN</span>
+  L619: <div className="max-upgrade-badge">MAKSİMUM GELİŞTİRME (+2) TAMAMLANDI</div>
+  L631: {isMax ? 'MAKSİMUM SEVİYE' : !levelMet ? 'SEVİYE YETERSİZ' : !goldMet ? 'YETERSİZ ALTIN' : partsMet ? `YÜKSELT (+${targetLevel})` : 'MALZEME EKSİK'}
+  L660: <span className="recipe-bonus-pill">{c.cost} ALTIN</span>
+  L666: <span>GEREKLİ</span>
+  L686: {!hasMaterials ? 'EN AZ 3 ADET GEREKLİ' : !hasGold ? 'YETERSİZ ALTIN' : 'DÖNÜŞTÜR (3→1)'}
+
+=== frontend\src\components\CraftPanel.test.jsx (2 matches) ===
+  L60: expect(container.querySelector('svg[aria-label="Taktik Kask görseli"]')).not.toBeNull();
+  L65: expect(container.querySelector('svg[aria-label="Taktik Kask görseli"]')).not.toBeNull();
+
+=== frontend\src\components\EquipmentThumbnail.jsx (1 matches) ===
+  L12: return <svg className={`equipment-thumbnail tier-${item.tier} ${compact ? 'compact' : ''}`} viewBox="0 0 100 100" role="img" aria-label={`${item.name} görseli`}><g>{forms[item.slot]}</g><text x="50" y="95" textAnchor="middle">T{item.tier}</text></svg>;
+
+=== frontend\src\components\Inventory.jsx (10 matches) ===
+  L268: <span>[ BOŞ YUVA ]</span>
+  L269: <small>Kuşanmak için tıklayın</small>
+  L280: <h3>{EQUIPMENT_SLOTS.find(s => s.id === selectedSlot)?.name} YUVASI</h3>
+  L287: <X size={13} /> ÇIKAR
+  L305: <span className="section-subtitle">SAHİP OLUNAN EKİPMANLAR</span>
+  L307: <p className="no-items-note">Bu yuvaya uygun ekipmanınız yok. Atölyeden (C) yeni ekipman üretebilirsiniz.</p>
+  L328: {isEquipped ? 'KUŞANILDI' : 'KUŞAN'}
+  L345: <span className="inventory-section-label">ÜRETİM & KALİBRASYON MALZEMELERİ (15 MATERYAL)</span>
+  L366: <span className="inventory-section-label">TIBBİ SARF MALZEMELERİ & SİLAH PARÇALARI</span>
+  L375: {item.kind === 'energy-drink' && <button type="button" onClick={() => consumeEnergy?.('energy_drink')} disabled={me?.hp <= 0}>TÜKET</button>}
+
+=== frontend\src\components\MarketPanel.jsx (51 matches) ===
+  L106: <span>BAKİYE:</span>
+  L107: <strong>{playerGold.toLocaleString('en-US')} ALTIN</strong>
+  L121: <Users size={14} /> ASKER YOLDAŞLAR ({activeSoldierTiers.length}/5 AKTİF · {ownedSoldiers.length}/5 SAHİP)
+  L128: <DollarSign size={14} /> TÜCCARA SAT (SELL)
+  L135: <Package size={14} /> ÖZEL PAKETLER
+  L164: <span className="soldier-status active">GÖREVDE (AKTİF)</span>
+  L166: <span className="soldier-status owned">KIŞLADA</span>
+  L168: <span className="soldier-price">{s.price.toLocaleString()} ALTIN</span>
+  L173: {next && <p className="soldier-desc">S{s.tier}→S{next.tier} · {next.weapon} · {upgradeCost} ALTIN · LVL {next.levelReq}</p>}
+  L177: <span>CAN (HP)</span>
+  L181: <span>SİLAH</span>
+  L185: <span>HASAR ÇARPANI</span>
+  L189: <span>ATIŞ HIZI / MENZİL</span>
+  L202: {!levelMet ? `LVL ${s.levelReq} GEREKLİ` : !goldMet ? 'YETERSİZ ALTIN' : 'SATIN AL VE BAĞLA'}
+  L211: GERİ ÇEK (DEAKTİF ET)
+  L220: GÖREVE ÇAĞIR (AKTİF ET)
+  L223: {s.tier < 5 && <button type="button" className="soldier-action-btn activate" disabled={actionPending || !canUpgrade} onClick={() => handleSoldierUpgrade(record.instance_id)}>YÜKSELT</button>}
+  L228: {roster.length < 5 && <div className="soldier-card tier-1"><div className="soldier-card-top"><strong>BOŞ KADRO YUVASI</strong></div><p className="soldier-desc">S1 asker bireysel olarak alınır ve sonra yükseltilir.</p><button type="button" className="soldier-action-btn buy" disabled={actionPending || playerGold < 500} onClick={() => handleSoldierBuy(1)}>ASKER AL — S1 / 500 ALTIN</button></div>}
+  L229: {roster.length >= 5 && <p className="soldier-desc">KADRO KAPASİTESİ DOLU (5/5)</p>}
+  L243: MALZEMELER
+  L250: SİLAH PARÇALARI
+  L264: TIBBİ SARF
+  L271: SİLAHLAR
+  L287: <small>Mevcut: {count} adet · Fiyat: {price} Altın/adet</small>
+  L296: 1x SAT (+{price}g)
+  L305: 5x SAT (+{price * 5}g)
+  L319: <p className="no-sell-items">Satılacak silah parçanız yok.</p>
+  L334: <small>Mevcut: {count} adet · Fiyat: {price} Altın/adet</small>
+  L343: 1x SAT (+{price}g)
+  L357: <p className="no-sell-items">Satılacak donanımınız yok.</p>
+  L370: <small>{item.statLabel} · Fiyat: {totalPrice} Altın</small>
+  L379: SAT (+{totalPrice}g)
+  L394: <strong>İlk Yardım Kiti (Faid)</strong>
+  L395: <small>Mevcut: {healItems.faid || 0} adet · Fiyat: 4 Altın/adet</small>
+  L404: 1x SAT (+4g)
+  L410: <strong>Büyük Medkit</strong>
+  L411: <small>Mevcut: {healItems.medkit || 0} adet · Fiyat: 8 Altın/adet</small>
+  L420: 1x SAT (+8g)
+  L439: <small>{isGlock ? 'Başlangıç silahı satılamaz' : `Fiyat: ${price || 0} Altın`}</small>
+  L448: {isGlock ? 'SATILAMAZ' : `SİLAHI SAT (+${price}g)`}
+  L469: <p>Robinhood Chain akıllı sözleşme doğrulamalı taktik silah ve paraşüt indirme sandığı.</p>
+  L471: <span>• AK-47 Muharebe Tüfeği</span>
+  L472: <span>• T2 Kompozit Gövde Zırhı</span>
+  L473: <span>• 500 Altın</span>
+  L476: ZİNCİR ÜZERİNDE MINT ET (YAKINDA)
+  L483: <strong>ELİTE OPERATOR BUNDLE</strong>
+  L485: <p>Tüm 3. Seviye ekipman parçaları ve S5 Seçkin Muhafız sözleşmesi.</p>
+  L487: <span>• S5 Seçkin Asker Sözleşmesi</span>
+  L488: <span>• T3 Kalibrasyon Kartuşu ×3</span>
+  L489: <span>• 2500 Altın</span>
+  L492: ZİNCİR ÜZERİNDE MINT ET (YAKINDA)
+
+=== frontend\src\components\MarketPanel.test.jsx (6 matches) ===
+  L42: expect(container.textContent).toContain('KADRO KAPASİTESİ DOLU (5/5)');
+  L43: expect([...container.querySelectorAll('button')].some(button => button.textContent.includes('ASKER AL'))).toBe(false);
+  L49: act(() => [...specific.querySelectorAll('button')].find(button => button.textContent.includes('YÜKSELT')).click());
+  L56: act(() => [...active.querySelectorAll('button')].find(button => button.textContent.includes('GERİ ÇEK')).click());
+  L62: const upgrade = [...card('soldier-instance-5').querySelectorAll('button')].find(button => button.textContent.includes('YÜKSELT'));
+  L65: expect([...card('soldier-instance-5').querySelectorAll('button')].find(button => button.textContent.includes('YÜKSELT')).disabled).toBe(true);
+
+=== frontend\src\components\RadialMenu.jsx (7 matches) ===
+  L24: hint: 'AŞAĞI / BOTTOM'
+  L44: hint: 'SAĞ / RIGHT'
+  L136: {/* BOTTOM / AŞAĞI: CRAFTING */}
+  L145: <span>BOTTOM · AŞAĞI</span>
+  L174: {/* RIGHT / SAĞ: STATS */}
+  L183: <span>RIGHT · SAĞ</span>
+  L234: PAZAR & ASKERLER (M) ↗
+
+=== frontend\src\components\ui\dialog.jsx (2 matches) ===
+  L39: aria-label="Kapat"
+  L42: <span className="sr-only">Kapat</span>
+
+=== frontend\src\constants\testIds\index.js (1 matches) ===
+  L6: // is re-exported from here, so consumers can do a single import like
+
+=== frontend\src\game\creatureSounds.js (1 matches) ===
+  L10: if (!response.ok) throw new Error('Failed to load creature sounds. You can reconnect.');
+
+=== frontend\src\game\equipmentConfig.js (43 matches) ===
+  L5: { id: 'hands', name: 'HANDS / ELDİVEN', icon: 'crosshair' },
+  L7: { id: 'backpack', name: 'BACKPACK / ÇANTA', icon: 'backpack' },
+  L12: helm_t1: { id: 'helm_t1', name: 'Taktik Kask', slot: 'head', tier: 1, levelReq: 3, statLabel: '+3 Zırh', desc: 'Hafif çelik takviyeli koruyucu başlık.' },
+  L13: helm_t2: { id: 'helm_t2', name: 'Kompozit Kask', slot: 'head', tier: 2, levelReq: 15, statLabel: '+6 Zırh', desc: 'Seramik katmanlı gelişmiş koruma başlığı.' },
+  L14: helm_t3: { id: 'helm_t3', name: 'Balistik Ağır Kask', slot: 'head', tier: 3, levelReq: 30, statLabel: '+9 Zırh', desc: 'En üst düzey balistik kompozit baş zırhı.' },
+  L17: vest_t1: { id: 'vest_t1', name: 'Hafif Hücum Yeleği', slot: 'body', tier: 1, levelReq: 3, statLabel: '+6 Zırh', desc: 'Temel balistik koruma sağlayan taktik yelek.' },
+  L18: vest_t2: { id: 'vest_t2', name: 'Taktik Plaka Taşıyıcı', slot: 'body', tier: 2, levelReq: 15, statLabel: '+12 Zırh', desc: 'Seramik plakalarla donatılmış gövde zırhı.' },
+  L19: vest_t3: { id: 'vest_t3', name: 'Ağır Taarruz Yeleği', slot: 'body', tier: 3, levelReq: 30, statLabel: '+18 Zırh', desc: 'Ağır muharebe şartları için kompozit gövde zırhı.' },
+  L22: pants_t1: { id: 'pants_t1', name: 'Güçlendirilmiş Pantolon', slot: 'legs', tier: 1, levelReq: 3, statLabel: '+3 Zırh', desc: 'Kevlar liflerle örülmüş dayanıklı pantolon.' },
+  L23: pants_t2: { id: 'pants_t2', name: 'Muharebe Pantolonu', slot: 'legs', tier: 2, levelReq: 15, statLabel: '+6 Zırh', desc: 'Eklem korumalı taktik askeri pantolon.' },
+  L24: pants_t3: { id: 'pants_t3', name: 'Zırhlı Taarruz Pantolonu', slot: 'legs', tier: 3, levelReq: 30, statLabel: '+9 Zırh', desc: 'Kompozit bacak plakalarıyla donatılmış ağır alt zırh.' },
+  L27: gloves_t1: { id: 'gloves_t1', name: 'Taktik Atış Eldiveni', slot: 'hands', tier: 1, levelReq: 3, statLabel: '-%2 Doldurma', desc: 'Kavramayı artıran hafif şarjör doldurma eldiveni.' },
+  L28: gloves_t2: { id: 'gloves_t2', name: 'Hızlı Çekiş Eldiveni', slot: 'hands', tier: 2, levelReq: 15, statLabel: '-%4 Doldurma', desc: 'Silah hakimiyetini ve hızını artıran eldiven.' },
+  L29: gloves_t3: { id: 'gloves_t3', name: 'Hassas Kompozit Eldiven', slot: 'hands', tier: 3, levelReq: 30, statLabel: '-%6 Doldurma', desc: 'Maksimum hızlı şarjör değiştirme desteği.' },
+  L32: boots_t1: { id: 'boots_t1', name: 'Hafif Devriye Botu', slot: 'feet', tier: 1, levelReq: 3, statLabel: '+%1 Hız', desc: 'Aşınmaya dayanıklı esnek tabanlı bot.' },
+  L33: boots_t2: { id: 'boots_t2', name: 'Hızlı İntikal Botu', slot: 'feet', tier: 2, levelReq: 15, statLabel: '+%2 Hız', desc: 'Hızlı yer değiştirme sağlayan taktik bot.' },
+  L34: boots_t3: { id: 'boots_t3', name: 'Taktik Taarruz Botu', slot: 'feet', tier: 3, levelReq: 30, statLabel: '+%3 Hız', desc: 'Ağır zeminlerde maksimum depar kabiliyeti.' },
+  L37: pack_t1: { id: 'pack_t1', name: 'Kompakt Sırt Çantası', slot: 'backpack', tier: 1, levelReq: 3, statLabel: '+%3 Dayanıklılık', desc: 'Ağırlık merkezini dengeleyerek stamina yeniler.' },
+  L38: pack_t2: { id: 'pack_t2', name: 'Saha Operasyon Çantası', slot: 'backpack', tier: 2, levelReq: 15, statLabel: '+%6 Dayanıklılık', desc: 'Ergonomik askeri yük dağıtım çantası.' },
+  L39: pack_t3: { id: 'pack_t3', name: 'Genişletilmiş Sefer Çantası', slot: 'backpack', tier: 3, levelReq: 30, statLabel: '+%9 Dayanıklılık', desc: 'En yüksek seviye depar ve stamina rejenerasyonu.' },
+  L44: { id: 'fabric_t1', name: 'Balistik Kumaş', family: 'fabric', tier: 1 },
+  L49: { id: 'plate_t1', name: 'Çelik Plaka', family: 'plate', tier: 1 },
+  L54: { id: 'binding_t1', name: 'Naylon Kayış', family: 'binding', tier: 1 },
+  L55: { id: 'binding_t2', name: 'Takviyeli Bağlantı', family: 'binding', tier: 2 },
+  L56: { id: 'binding_t3', name: 'Titanyum Bağlantı', family: 'binding', tier: 3 },
+  L64: { id: 'calibration_t1', name: 'T1 Kalibrasyon Kartuşu', family: 'calibration', tier: 1 },
+  L65: { id: 'calibration_t2', name: 'T2 Kalibrasyon Kartuşu', family: 'calibration', tier: 2 },
+  L66: { id: 'calibration_t3', name: 'T3 Kalibrasyon Kartuşu', family: 'calibration', tier: 3 },
+  L72: name: 'Asker S1 (Çaylak / Recruit)',
+  L73: role: 'Giriş Seviye Destek',
+  L81: desc: 'Hafif yan ateş desteği sağlar. Yakın mesafede sahibini korur.',
+  L85: name: 'Asker S2 (Devriye / Patrol)',
+  L86: role: 'Av Tüfeği Muhafızı',
+  L88: weapon: 'Pompalı Tüfek',
+  L94: desc: 'Yakın temas muharebesinde yüksek kitle hasarı sağlar.',
+  L98: name: 'Asker S3 (Piyade / Rifleman)',
+  L107: desc: 'Orta menzilde sürekli otomatik yaylım ateşiyle baskı kurar.',
+  L111: name: 'Asker S4 (Operatör / Operator)',
+  L112: role: 'Hızlı İntikal SMG',
+  L120: desc: 'Yüksek atış hızıyla hedefleri hızla eritir.',
+  L124: name: 'Asker S5 (Seçkin Muhafız / Elite)',
+  L125: role: 'Ağır Makineli Bastırma',
+  L133: desc: 'En yüksek can ve menzile sahip üst düzey askeri destek birimi.',
+
+=== frontend\src\game\lootModels.js (4 matches) ===
+  L133: const can = new THREE.Mesh(new THREE.CylinderGeometry(.12, .12, .42, 12), matCasing);
+  L134: can.position.y = .25;
+  L135: can.castShadow = true;
+  L138: g.add(can, ring);
+
+=== frontend\src\hooks\useSession.js (1 matches) ===
+  L111: clearTimeout(timeout); teardown(); setError(message.code === 1013 ? 'The server is full. Try again shortly.' : 'The server connection was lost. You can join again.'); setMode('lobby'); setState(null); engineRef.current?.setMode('lobby', weapon, skin);
+
+=== frontend\public\index.html (2 matches) ===
+  L18: Only files inside the `public` folder can be referenced from the HTML.
+  L35: You can add webfonts, meta tags, or analytics to this file.
+
+=== backend\equipment.py (71 matches) ===
+  L17: 'level_req': 1, 'base_stat': {'armor': 4}, 'description': 'Mat çelik yuvarlak kabuk, kumaş çene kayışı.'
+  L21: 'level_req': 15, 'base_stat': {'armor': 6}, 'description': 'Köşeli balistik kabuk, yan raylar, alın pedi.'
+  L25: 'level_req': 30, 'base_stat': {'armor': 8}, 'description': 'Kesik yan profilli kompozit kabuk, kapalı bağlantılar.'
+  L31: 'level_req': 1, 'base_stat': {'armor': 10}, 'description': 'İnce kumaş panel, görünür dikiş, iki basit cep.'
+  L35: 'level_req': 15, 'base_stat': {'armor': 15}, 'description': 'Ön ve arka balistik plaka, üç şarjör cebi, tokalı omuz.'
+  L39: 'level_req': 30, 'base_stat': {'armor': 20}, 'description': 'Segmentli göğüs plaka, yan koruma, kompakt kapalı cepler.'
+  L45: 'level_req': 1, 'base_stat': {'armor': 6}, 'description': 'Kumaş uyluk pedleri ve küçük diz kapakları.'
+  L49: 'level_req': 15, 'base_stat': {'armor': 9}, 'description': 'Kayışlı sert dizlik, dış uyluk plakası.'
+  L53: 'level_req': 30, 'base_stat': {'armor': 12}, 'description': 'Hareketli segmentli uyluk ve diz plakaları.'
+  L59: 'level_req': 1, 'base_stat': {'reload_speed': 0.02}, 'description': 'Parmakları açık kumaş, deri avuç.'
+  L63: 'level_req': 15, 'base_stat': {'reload_speed': 0.04}, 'description': 'Tam parmak, kauçuk eklem koruyucu.'
+  L67: 'level_req': 30, 'base_stat': {'reload_speed': 0.06}, 'description': 'Kompozit eklem, takviyeli avuç, bilekte kısa kilit.'
+  L73: 'level_req': 1, 'base_stat': {'movement_speed': 0.01}, 'description': 'Deri/kumaş, sade bağcık ve esnek taban.'
+  L77: 'level_req': 15, 'base_stat': {'movement_speed': 0.02}, 'description': 'Kalın bilek desteği, tırtıklı taban, burun kaplaması.'
+  L81: 'level_req': 30, 'base_stat': {'movement_speed': 0.03}, 'description': 'Hafif katmanlı bilek koruma, kapalı bağcık, kompozit burun.'
+  L87: 'level_req': 1, 'base_stat': {'stamina_regen': 0.03}, 'description': 'Küçük rulo kapaklı kumaş çanta.'
+  L91: 'level_req': 15, 'base_stat': {'stamina_regen': 0.06}, 'description': 'Yan cepli dikdörtgen ikmal çantası.'
+  L95: 'level_req': 30, 'base_stat': {'stamina_regen': 0.09}, 'description': 'Sert sırt paneli, üç bölmeli kompakt operasyon çantası.'
+  L109: 'fabric_t1': {'id': 'fabric_t1', 'name': 'Balistik Kumaş', 'family': 'fabric', 'tier': 1},
+  L114: 'plate_t1': {'id': 'plate_t1', 'name': 'Çelik Plaka', 'family': 'plate', 'tier': 1},
+  L119: 'binding_t1': {'id': 'binding_t1', 'name': 'Naylon Kayış', 'family': 'binding', 'tier': 1},
+  L120: 'binding_t2': {'id': 'binding_t2', 'name': 'Takviyeli Bağlantı', 'family': 'binding', 'tier': 2},
+  L121: 'binding_t3': {'id': 'binding_t3', 'name': 'Titanyum Bağlantı', 'family': 'binding', 'tier': 3},
+  L129: 'calibration_t1': {'id': 'calibration_t1', 'name': 'T1 Kalibrasyon Kartuşu', 'family': 'calibration', 'tier': 1},
+  L130: 'calibration_t2': {'id': 'calibration_t2', 'name': 'T2 Kalibrasyon Kartuşu', 'family': 'calibration', 'tier': 2},
+  L131: 'calibration_t3': {'id': 'calibration_t3', 'name': 'T3 Kalibrasyon Kartuşu', 'family': 'calibration', 'tier': 3},
+  L338: return False, "Geçersiz ekipman tarifi."
+  L342: return False, f"Seviyeniz yetersiz. Gerekli seviye: {recipe['level_req']}."
+  L350: return False, f"Yetersiz altın. Gerekli: {gold_cost} altın."
+  L359: return False, f"Yetersiz kalibrasyon kartuşu: {part_id} ({calibration.get(part_id, 0)}/{needed})."
+  L362: return False, f"Yetersiz malzeme: {part_id} ({parts.get(part_id, 0)}/{needed})."
+  L381: return True, f"{EQUIPMENT_CATALOG[item_id]['name']} başarıyla üretildi!"
+  L388: return False, "Bu ekipmana sahip değilsiniz."
+  L398: return False, f"Yükseltme için seviyeniz yetersiz. Gerekli seviye: {recipe['req_player_level']}."
+  L402: return False, f"Yetersiz altın. Gerekli: {gold_cost} altın."
+  L410: return False, f"Yetersiz kalibrasyon kartuşu: {part_id} ({calibration.get(part_id, 0)}/{needed})."
+  L413: return False, f"Yetersiz malzeme: {part_id} ({parts.get(part_id, 0)}/{needed})."
+  L424: return True, f"{EQUIPMENT_CATALOG[item_id]['name']} seviye +{recipe['target_level']} yapıldı!"
+  L430: return False, "Geçersiz ekipman yuvası."
+  L436: return True, f"{slot.capitalize()} yuvasındaki ekipman çıkarıldı."
+  L439: return False, "Bu ekipmana sahip değilsiniz."
+  L443: return False, "Ekipman bu yuvaya takılamaz."
+  L446: return True, f"{info['name']} kuşandı."
+  L455: return False, "Farklı türdeki malzemeler birbirine dönüştürülemez."
+  L461: return False, "Sadece bir üst kademe kalibrasyon kartuşuna dönüştürülebilir."
+  L466: return False, f"Dönüşüm için en az 3 adet {source_id} gereklidir."
+  L468: return False, f"Yetersiz altın. Gerekli: {gold_cost} altın."
+  L473: return True, f"3 adet {source_id} başarıyla 1 adet {target_id} kartuşuna dönüştürüldü."
+  L479: return False, "Geçersiz malzeme."
+  L482: return False, "Yalnızca aynı malzeme ailesi içinde dönüşüm yapılabilir."
+  L485: return False, "Sadece bir üst kademe malzemeye dönüştürülebilir."
+  L490: return False, f"Dönüşüm için en az 3 adet {s_info['name']} gereklidir."
+  L492: return False, f"Yetersiz altın. Gerekli: {gold_cost} altın."
+  L497: return True, f"3 adet {s_info['name']} başarıyla 1 adet {t_info['name']} malzemesine dönüştürüldü."
+  L503: return False, "Geçersiz satış miktarı.", 0
+  L512: return False, "Yetersiz kalibrasyon kartuşu.", 0
+  L517: return False, "Yetersiz malzeme.", 0
+  L521: return True, f"{amount}x malzeme satıldı. +{total_gold} altın kazanıldı.", total_gold
+  L529: return False, "Yetersiz silah parçası.", 0
+  L542: return True, f"{amount}x silah parçası satıldı. +{total_gold} altın kazanıldı.", total_gold
+  L548: return False, "Bu ekipmana sahip değilsiniz.", 0
+  L551: return False, "Geçersiz ekipman.", 0
+  L568: return True, f"{info['name']} satıldı. +{total_gold} altın kazanıldı.", total_gold
+  L572: return False, "Geçersiz sarf malzemesi.", 0
+  L576: return False, "Yetersiz tıbbi malzeme.", 0
+  L580: return True, f"{amount}x sarf malzemesi satıldı. +{total_gold} altın kazanıldı.", total_gold
+  L584: return False, "Başlangıç silahı (Glock 18) satılamaz.", 0
+  L586: return False, "Geçersiz veya satılamayan silah.", 0
+  L589: return False, "Bu silaha sahip değilsiniz.", 0
+  L601: return True, f"{item_key.upper()} silahı satıldı. +{total_gold} altın kazanıldı.", total_gold
+  L603: return False, "Geçersiz kategori.", 0
+
+=== backend\local_run.py (1 matches) ===
+  L30: # for local in-memory use so the included admin routes can complete startup.
+
+=== backend\loot.py (4 matches) ===
+  L50: return False, 'Bu sarf malzemesi şu anda kullanılamaz.'
+  L53: return True, 'Enerji içeceği zaten kullanıldı.'
+  L56: return False, 'Enerji içeceği stoğunuz yok.'
+  L67: return True, 'ENERGY DRINK: 60 SN ×2 DAYANIKLILIK YENİLENMESİ.'
+
+=== backend\server.py (10 matches) ===
+  L296: raise HTTPException(status_code=401, detail='Giriş yapmanız gerekiyor.')
+  L363: return {'success': True, 'message': 'Asker geri çekildi.', 'progress': target if not is_live else None}
+  L366: raise HTTPException(status_code=400, detail='Bu askere sahip değilsiniz.')
+  L371: raise HTTPException(status_code=400, detail='En fazla beş asker göreve çağrılabilir.')
+  L379: return {'success': True, 'message': f"{SOLDIER_CATALOG[body.tier]['name']} göreve çağrıldı!", 'progress': target if not is_live else None}
+  L500: # A browser can reconnect while its prior socket is still flushing. Read
+  L507: await ws.close(code=1013, reason='Sunucu dolu.')
+  L588: await game.send(player, {'type': 'action_error', 'message': 'Asker kimliği gerekli.'})
+  L599: await game.send(player, {'type': 'action_error', 'message': 'Asker kimliği gerekli.'})
+  L632: await game.send(player, {'type': 'action_error', 'message': 'Only the alliance leader can change friendly fire.'})
+
+=== backend\soldier.py (11 matches) ===
+  L113: if len(roster) >= 5: return False, 'En fazla beş askere sahip olabilirsiniz.', None
+  L114: if player.get('gold', 0) < 500: return False, 'Yetersiz altın. Gerekli: 500 altın.', None
+  L118: return True, 'S1 asker kadroya katıldı.', record
+  L122: if not record: return False, 'Asker bulunamadı.', None
+  L124: if tier >= 5: return False, 'Asker zaten maksimum seviyede.', None
+  L126: if player.get('level', 1) < next_spec['level_req']: return False, f"Gerekli seviye: {next_spec['level_req']}.", None
+  L127: if player.get('gold', 0) < cost: return False, f"Yetersiz altın. Gerekli: {cost} altın.", None
+  L129: return True, f"Asker S{tier + 1} seviyesine yükseltildi.", record
+  L133: if not record: return False, 'Asker bulunamadı.'
+  L136: if len(ids) >= 5: return False, 'En fazla beş asker görevde olabilir.'
+  L139: ensure_owned_soldiers(player); return True, 'Asker göreve çağrıldı.' if active else 'Asker geri çekildi.'
+
+=== backend\spawning.py (1 matches) ===
+  L20: # A crowded sanctuary can share a spawn cell; it remains enemy-free.
+
+=== backend\tests\test_backend_short_smoke.py (1 matches) ===
+  L1: """Kısa odaklı DEADZONE backend smoke + birim testleri (uzun e2e yok)."""
+
+=== backend\tests\test_boss_features_focus.py (1 matches) ===
+  L336: # Module: player weapons can damage large bosses; dead bosses stop taking damage and get respawn timer
+
+=== backend\tests\test_enemy_balance_short_focus.py (1 matches) ===
+  L259: # Chain reaction sanity: a nearby weak immolator can trigger its own explosion once.
+
+=== backend\tests\test_live_ws_focus.py (2 matches) ===
+  L1: """Module: public API + gerçek websocket akışında seq/ack/ping ve kısa çoklu istemci örneklemi."""
+  L212: f"WS sample (6 oyuncu/5s): states={state_count}, freq_hz={freq:.2f}, "
+
+=== backend\tests\test_network_channel_focus.py (2 matches) ===
+  L1: """Module: network.ClientChannel + engine tick isolation kısa odaklı testler."""
+  L104: # Uvicorn can surface the underlying websockets normal-close exception.
+
+=== backend\tests\test_skin_ws_contract.py (9 matches) ===
+  L1: """Skin seçim ve websocket senkronizasyon sözleşmesi testleri."""
+  L73: # Module: /api/join skin doğrulama + varsayılan skin davranışı
+  L95: # Module: gerçek iki websocket istemcide skin senkronizasyonu + shot/kill/respawn sözleşmesi
+  L103: # Her iki istemci de karşı oyuncunun skin bilgisini görmeli.
+  L115: # Yerel skin doğrulaması.
+  L119: # Oyuncu 1 ateş edince oyuncu 2 bunu event/firing olarak görmeli.
+  L142: # PvP için iki oyuncunun da korumasını kaldır.
+  L146: # Oyuncu 1, oyuncu 2'yi hedefleyip öldürsün.
+  L171: # Respawn sonrası me.skin ve me.weapon korunmalı.
+
+=== backend\tests\test_soldier_ws_account_regression.py (2 matches) ===
+  L103: assert receive_until(ws, 'action_success')['message'] == 'S1 asker kadroya katıldı.'
+  L111: assert 'En fazla beş' in receive_until(ws, 'action_error')['message']
+

@@ -1,0 +1,26 @@
+{
+  "date": "2026-09-26",
+  "base_reports": ["iteration_5.json", "iteration_6.json"],
+  "status": "verified",
+  "backend_tests": {"passed": 27, "failed": 0, "artifact": "admin-inventory-final.xml"},
+  "frontend_worker_tests": "PASS",
+  "production_build": "PASS; inventory-admin-build.log",
+  "new_server_errors": [],
+  "ui_verified": ["Admin login/settings/boss/day-night/density/bots/logout at desktop1920x800 and mobile390x844", "Inventory10renderedweapons/defaultGlock/equip", "I/Escape/mobileopen-close-reopen without accidental settings navigation", "No horizontal overflow"],
+  "resolved": [
+    "Origin proxy conversion uses exact environment allowlist; invalid/missingOrigin blocked.",
+    "Operator lockout is stable across rotating proxies; test DB parser and targeted finally cleanup fixed.",
+    "Inventory Escape handled once in capture phase.",
+    "Atomic post-accept admission prevents two concurrent humans exceeding200 with/withoutbot eviction.",
+    "Ammo test corrected to stopfire+waitseqack before measurement; serverinventory preserved.",
+    "Old respawn regression updated to requestedGlock18 and10s gate."
+  ],
+  "clarifications": [
+    "External namedadmincookies observed Secure/HttpOnly/SameSiteNone/Partitioned afteredge; app setsStrict. Origin enforcement remains independentCSRFprotection.",
+    "No userrequirementfor400spawn-gridpoints:361intersections pluscontinuousjitter,400randomsamplesverified.",
+    "English generatedforeignfictionalhandles match approvednicknamechoice;200uniquehandlesverified."
+  ],
+  "restored_settings": {"all_bosses": true, "time_of_day": "day", "zombie_density": "normal", "bot_count": 0},
+  "limitations": ["Temporary weakpassword123123 per user", "200activeparticipant performance notload-tested", "Originaluser300msRTT awaitsuser-deviceverification", "HeadlesssoftwareWebGL notFPSbenchmark"],
+  "mocked_product_apis": false
+}

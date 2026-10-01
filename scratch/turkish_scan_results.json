@@ -1,0 +1,1662 @@
+{
+  "frontend\\src\\components\\AlliancePanel.jsx": [
+    {
+      "line": 22,
+      "content": "{!leader && <p className=\"alliance-note\">Only the alliance leader can change friendly fire.</p>}",
+      "has_char": false,
+      "has_word": true
+    }
+  ],
+  "frontend\\src\\components\\CraftPanel.css": [
+    {
+      "line": 294,
+      "content": ".craft-recipe-card.can-craft {",
+      "has_char": false,
+      "has_word": true
+    },
+    {
+      "line": 298,
+      "content": ".craft-recipe-card.can-craft:hover {",
+      "has_char": false,
+      "has_word": true
+    }
+  ],
+  "frontend\\src\\components\\CraftPanel.jsx": [
+    {
+      "line": 195,
+      "content": "{ id: 'c_fab_1', source: 'fabric_t1', target: 'fabric_t2', name: 'Balistik Kumaş → Aramid Lif', cost: 10, tier: 1 },",
+      "has_char": true,
+      "has_word": false
+    },
+    {
+      "line": 198,
+      "content": "{ id: 'c_plt_1', source: 'plate_t1', target: 'plate_t2', name: 'Çelik Plaka → Seramik Plaka', cost: 10, tier: 1 },",
+      "has_char": true,
+      "has_word": false
+    },
+    {
+      "line": 201,
+      "content": "{ id: 'c_bnd_1', source: 'binding_t1', target: 'binding_t2', name: 'Naylon Kayış → Takviyeli Bağlantı', cost: 10, tier: 1 },",
+      "has_char": true,
+      "has_word": false
+    },
+    {
+      "line": 202,
+      "content": "{ id: 'c_bnd_2', source: 'binding_t2', target: 'binding_t3', name: 'Takviyeli Bağlantı → Titanyum Bağlantı', cost: 30, tier: 2 },",
+      "has_char": true,
+      "has_word": false
+    },
+    {
+      "line": 207,
+      "content": "{ id: 'c_cal_1', source: 'calibration_t1', target: 'calibration_t2', name: 'T1 Kalibrasyon → T2 Kalibrasyon', cost: 30, tier: 1 },",
+      "has_char": false,
+      "has_word": true
+    },
+    {
+      "line": 208,
+      "content": "{ id: 'c_cal_2', source: 'calibration_t2', target: 'calibration_t3', name: 'T2 Kalibrasyon → T3 Kalibrasyon', cost: 90, tier: 2 },",
+      "has_char": false,
+      "has_word": true
+    },
+    {
+      "line": 505,
+      "content": "<span className={levelMet ? 'met' : 'missing'}>LVL {item.levelReq} (SİZ: {playerLevel})</span>",
+      "has_char": true,
+      "has_word": false
+    },
+    {
+      "line": 506,
+      "content": "<span className={goldMet ? 'met' : 'missing'}>{reqGold} ALTIN</span>",
+      "has_char": false,
+      "has_word": true
+    },
+    {
+      "line": 528,
+      "content": "{isOwned ? 'ZATEN ÜRETİLDİ' : !levelMet ? 'SEVİYE YETERSİZ' : !goldMet ? 'YETERSİZ ALTIN' : partsMet ? 'EKİPMANI ÜRET (+0)' : 'MALZEME EKSİK'}",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 542,
+      "content": "<p className=\"empty-craft-note\">Henüz sahip olduğunuz bir donanım yok. Önce \"CRAFT EQUIPMENT\" sekmesinden donanım üretin.</p>",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 605,
+      "content": "<span className={levelMet ? 'met' : 'missing'}>GEREKLİ LVL {reqLevel} (SİZ: {playerLevel})</span>",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 606,
+      "content": "<span className={goldMet ? 'met' : 'missing'}>{reqGold} ALTIN</span>",
+      "has_char": false,
+      "has_word": true
+    },
+    {
+      "line": 619,
+      "content": "<div className=\"max-upgrade-badge\">MAKSİMUM GELİŞTİRME (+2) TAMAMLANDI</div>",
+      "has_char": true,
+      "has_word": false
+    },
+    {
+      "line": 631,
+      "content": "{isMax ? 'MAKSİMUM SEVİYE' : !levelMet ? 'SEVİYE YETERSİZ' : !goldMet ? 'YETERSİZ ALTIN' : partsMet ? `YÜKSELT (+${targetLevel})` : 'MALZEME EKSİK'}",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 660,
+      "content": "<span className=\"recipe-bonus-pill\">{c.cost} ALTIN</span>",
+      "has_char": false,
+      "has_word": true
+    },
+    {
+      "line": 666,
+      "content": "<span>GEREKLİ</span>",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 686,
+      "content": "{!hasMaterials ? 'EN AZ 3 ADET GEREKLİ' : !hasGold ? 'YETERSİZ ALTIN' : 'DÖNÜŞTÜR (3→1)'}",
+      "has_char": true,
+      "has_word": true
+    }
+  ],
+  "frontend\\src\\components\\CraftPanel.test.jsx": [
+    {
+      "line": 60,
+      "content": "expect(container.querySelector('svg[aria-label=\"Taktik Kask görseli\"]')).not.toBeNull();",
+      "has_char": true,
+      "has_word": false
+    },
+    {
+      "line": 65,
+      "content": "expect(container.querySelector('svg[aria-label=\"Taktik Kask görseli\"]')).not.toBeNull();",
+      "has_char": true,
+      "has_word": false
+    }
+  ],
+  "frontend\\src\\components\\EquipmentThumbnail.jsx": [
+    {
+      "line": 12,
+      "content": "return <svg className={`equipment-thumbnail tier-${item.tier} ${compact ? 'compact' : ''}`} viewBox=\"0 0 100 100\" role=\"img\" aria-label={`${item.name} görseli`}><g>{forms[item.slot]}</g><text x=\"50\" y=\"95\" textAnchor=\"middle\">T{item.tier}</text></svg>;",
+      "has_char": true,
+      "has_word": false
+    }
+  ],
+  "frontend\\src\\components\\Inventory.jsx": [
+    {
+      "line": 268,
+      "content": "<span>[ BOŞ YUVA ]</span>",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 269,
+      "content": "<small>Kuşanmak için tıklayın</small>",
+      "has_char": true,
+      "has_word": false
+    },
+    {
+      "line": 280,
+      "content": "<h3>{EQUIPMENT_SLOTS.find(s => s.id === selectedSlot)?.name} YUVASI</h3>",
+      "has_char": false,
+      "has_word": true
+    },
+    {
+      "line": 287,
+      "content": "<X size={13} /> ÇIKAR",
+      "has_char": true,
+      "has_word": false
+    },
+    {
+      "line": 305,
+      "content": "<span className=\"section-subtitle\">SAHİP OLUNAN EKİPMANLAR</span>",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 307,
+      "content": "<p className=\"no-items-note\">Bu yuvaya uygun ekipmanınız yok. Atölyeden (C) yeni ekipman üretebilirsiniz.</p>",
+      "has_char": true,
+      "has_word": false
+    },
+    {
+      "line": 328,
+      "content": "{isEquipped ? 'KUŞANILDI' : 'KUŞAN'}",
+      "has_char": true,
+      "has_word": false
+    },
+    {
+      "line": 345,
+      "content": "<span className=\"inventory-section-label\">ÜRETİM & KALİBRASYON MALZEMELERİ (15 MATERYAL)</span>",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 366,
+      "content": "<span className=\"inventory-section-label\">TIBBİ SARF MALZEMELERİ & SİLAH PARÇALARI</span>",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 375,
+      "content": "{item.kind === 'energy-drink' && <button type=\"button\" onClick={() => consumeEnergy?.('energy_drink')} disabled={me?.hp <= 0}>TÜKET</button>}",
+      "has_char": true,
+      "has_word": false
+    }
+  ],
+  "frontend\\src\\components\\MarketPanel.jsx": [
+    {
+      "line": 106,
+      "content": "<span>BAKİYE:</span>",
+      "has_char": true,
+      "has_word": false
+    },
+    {
+      "line": 107,
+      "content": "<strong>{playerGold.toLocaleString('en-US')} ALTIN</strong>",
+      "has_char": false,
+      "has_word": true
+    },
+    {
+      "line": 121,
+      "content": "<Users size={14} /> ASKER YOLDAŞLAR ({activeSoldierTiers.length}/5 AKTİF · {ownedSoldiers.length}/5 SAHİP)",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 128,
+      "content": "<DollarSign size={14} /> TÜCCARA SAT (SELL)",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 135,
+      "content": "<Package size={14} /> ÖZEL PAKETLER",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 164,
+      "content": "<span className=\"soldier-status active\">GÖREVDE (AKTİF)</span>",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 166,
+      "content": "<span className=\"soldier-status owned\">KIŞLADA</span>",
+      "has_char": true,
+      "has_word": false
+    },
+    {
+      "line": 168,
+      "content": "<span className=\"soldier-price\">{s.price.toLocaleString()} ALTIN</span>",
+      "has_char": false,
+      "has_word": true
+    },
+    {
+      "line": 173,
+      "content": "{next && <p className=\"soldier-desc\">S{s.tier}→S{next.tier} · {next.weapon} · {upgradeCost} ALTIN · LVL {next.levelReq}</p>}",
+      "has_char": false,
+      "has_word": true
+    },
+    {
+      "line": 177,
+      "content": "<span>CAN (HP)</span>",
+      "has_char": false,
+      "has_word": true
+    },
+    {
+      "line": 181,
+      "content": "<span>SİLAH</span>",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 185,
+      "content": "<span>HASAR ÇARPANI</span>",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 189,
+      "content": "<span>ATIŞ HIZI / MENZİL</span>",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 202,
+      "content": "{!levelMet ? `LVL ${s.levelReq} GEREKLİ` : !goldMet ? 'YETERSİZ ALTIN' : 'SATIN AL VE BAĞLA'}",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 211,
+      "content": "GERİ ÇEK (DEAKTİF ET)",
+      "has_char": true,
+      "has_word": false
+    },
+    {
+      "line": 220,
+      "content": "GÖREVE ÇAĞIR (AKTİF ET)",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 223,
+      "content": "{s.tier < 5 && <button type=\"button\" className=\"soldier-action-btn activate\" disabled={actionPending || !canUpgrade} onClick={() => handleSoldierUpgrade(record.instance_id)}>YÜKSELT</button>}",
+      "has_char": true,
+      "has_word": false
+    },
+    {
+      "line": 228,
+      "content": "{roster.length < 5 && <div className=\"soldier-card tier-1\"><div className=\"soldier-card-top\"><strong>BOŞ KADRO YUVASI</strong></div><p className=\"soldier-desc\">S1 asker bireysel olarak alınır ve sonra yükseltilir.</p><button type=\"button\" className=\"soldier-action-btn buy\" disabled={actionPending || playerGold < 500} onClick={() => handleSoldierBuy(1)}>ASKER AL — S1 / 500 ALTIN</button></div>}",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 229,
+      "content": "{roster.length >= 5 && <p className=\"soldier-desc\">KADRO KAPASİTESİ DOLU (5/5)</p>}",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 243,
+      "content": "MALZEMELER",
+      "has_char": false,
+      "has_word": true
+    },
+    {
+      "line": 250,
+      "content": "SİLAH PARÇALARI",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 264,
+      "content": "TIBBİ SARF",
+      "has_char": true,
+      "has_word": false
+    },
+    {
+      "line": 271,
+      "content": "SİLAHLAR",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 287,
+      "content": "<small>Mevcut: {count} adet · Fiyat: {price} Altın/adet</small>",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 296,
+      "content": "1x SAT (+{price}g)",
+      "has_char": false,
+      "has_word": true
+    },
+    {
+      "line": 305,
+      "content": "5x SAT (+{price * 5}g)",
+      "has_char": false,
+      "has_word": true
+    },
+    {
+      "line": 319,
+      "content": "<p className=\"no-sell-items\">Satılacak silah parçanız yok.</p>",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 334,
+      "content": "<small>Mevcut: {count} adet · Fiyat: {price} Altın/adet</small>",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 343,
+      "content": "1x SAT (+{price}g)",
+      "has_char": false,
+      "has_word": true
+    },
+    {
+      "line": 357,
+      "content": "<p className=\"no-sell-items\">Satılacak donanımınız yok.</p>",
+      "has_char": true,
+      "has_word": false
+    },
+    {
+      "line": 370,
+      "content": "<small>{item.statLabel} · Fiyat: {totalPrice} Altın</small>",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 379,
+      "content": "SAT (+{totalPrice}g)",
+      "has_char": false,
+      "has_word": true
+    },
+    {
+      "line": 394,
+      "content": "<strong>İlk Yardım Kiti (Faid)</strong>",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 395,
+      "content": "<small>Mevcut: {healItems.faid || 0} adet · Fiyat: 4 Altın/adet</small>",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 404,
+      "content": "1x SAT (+4g)",
+      "has_char": false,
+      "has_word": true
+    },
+    {
+      "line": 410,
+      "content": "<strong>Büyük Medkit</strong>",
+      "has_char": true,
+      "has_word": false
+    },
+    {
+      "line": 411,
+      "content": "<small>Mevcut: {healItems.medkit || 0} adet · Fiyat: 8 Altın/adet</small>",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 420,
+      "content": "1x SAT (+8g)",
+      "has_char": false,
+      "has_word": true
+    },
+    {
+      "line": 439,
+      "content": "<small>{isGlock ? 'Başlangıç silahı satılamaz' : `Fiyat: ${price || 0} Altın`}</small>",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 448,
+      "content": "{isGlock ? 'SATILAMAZ' : `SİLAHI SAT (+${price}g)`}",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 469,
+      "content": "<p>Robinhood Chain akıllı sözleşme doğrulamalı taktik silah ve paraşüt indirme sandığı.</p>",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 471,
+      "content": "<span>• AK-47 Muharebe Tüfeği</span>",
+      "has_char": true,
+      "has_word": false
+    },
+    {
+      "line": 472,
+      "content": "<span>• T2 Kompozit Gövde Zırhı</span>",
+      "has_char": true,
+      "has_word": false
+    },
+    {
+      "line": 473,
+      "content": "<span>• 500 Altın</span>",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 476,
+      "content": "ZİNCİR ÜZERİNDE MINT ET (YAKINDA)",
+      "has_char": true,
+      "has_word": false
+    },
+    {
+      "line": 483,
+      "content": "<strong>ELİTE OPERATOR BUNDLE</strong>",
+      "has_char": true,
+      "has_word": false
+    },
+    {
+      "line": 485,
+      "content": "<p>Tüm 3. Seviye ekipman parçaları ve S5 Seçkin Muhafız sözleşmesi.</p>",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 487,
+      "content": "<span>• S5 Seçkin Asker Sözleşmesi</span>",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 488,
+      "content": "<span>• T3 Kalibrasyon Kartuşu ×3</span>",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 489,
+      "content": "<span>• 2500 Altın</span>",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 492,
+      "content": "ZİNCİR ÜZERİNDE MINT ET (YAKINDA)",
+      "has_char": true,
+      "has_word": false
+    }
+  ],
+  "frontend\\src\\components\\MarketPanel.test.jsx": [
+    {
+      "line": 42,
+      "content": "expect(container.textContent).toContain('KADRO KAPASİTESİ DOLU (5/5)');",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 43,
+      "content": "expect([...container.querySelectorAll('button')].some(button => button.textContent.includes('ASKER AL'))).toBe(false);",
+      "has_char": false,
+      "has_word": true
+    },
+    {
+      "line": 49,
+      "content": "act(() => [...specific.querySelectorAll('button')].find(button => button.textContent.includes('YÜKSELT')).click());",
+      "has_char": true,
+      "has_word": false
+    },
+    {
+      "line": 56,
+      "content": "act(() => [...active.querySelectorAll('button')].find(button => button.textContent.includes('GERİ ÇEK')).click());",
+      "has_char": true,
+      "has_word": false
+    },
+    {
+      "line": 62,
+      "content": "const upgrade = [...card('soldier-instance-5').querySelectorAll('button')].find(button => button.textContent.includes('YÜKSELT'));",
+      "has_char": true,
+      "has_word": false
+    },
+    {
+      "line": 65,
+      "content": "expect([...card('soldier-instance-5').querySelectorAll('button')].find(button => button.textContent.includes('YÜKSELT')).disabled).toBe(true);",
+      "has_char": true,
+      "has_word": false
+    }
+  ],
+  "frontend\\src\\components\\RadialMenu.jsx": [
+    {
+      "line": 24,
+      "content": "hint: 'AŞAĞI / BOTTOM'",
+      "has_char": true,
+      "has_word": false
+    },
+    {
+      "line": 44,
+      "content": "hint: 'SAĞ / RIGHT'",
+      "has_char": true,
+      "has_word": false
+    },
+    {
+      "line": 136,
+      "content": "{/* BOTTOM / AŞAĞI: CRAFTING */}",
+      "has_char": true,
+      "has_word": false
+    },
+    {
+      "line": 145,
+      "content": "<span>BOTTOM · AŞAĞI</span>",
+      "has_char": true,
+      "has_word": false
+    },
+    {
+      "line": 174,
+      "content": "{/* RIGHT / SAĞ: STATS */}",
+      "has_char": true,
+      "has_word": false
+    },
+    {
+      "line": 183,
+      "content": "<span>RIGHT · SAĞ</span>",
+      "has_char": true,
+      "has_word": false
+    },
+    {
+      "line": 234,
+      "content": "PAZAR & ASKERLER (M) ↗",
+      "has_char": false,
+      "has_word": true
+    }
+  ],
+  "frontend\\src\\components\\ui\\dialog.jsx": [
+    {
+      "line": 39,
+      "content": "aria-label=\"Kapat\"",
+      "has_char": false,
+      "has_word": true
+    },
+    {
+      "line": 42,
+      "content": "<span className=\"sr-only\">Kapat</span>",
+      "has_char": false,
+      "has_word": true
+    }
+  ],
+  "frontend\\src\\constants\\testIds\\index.js": [
+    {
+      "line": 6,
+      "content": "// is re-exported from here, so consumers can do a single import like",
+      "has_char": false,
+      "has_word": true
+    }
+  ],
+  "frontend\\src\\game\\creatureSounds.js": [
+    {
+      "line": 10,
+      "content": "if (!response.ok) throw new Error('Failed to load creature sounds. You can reconnect.');",
+      "has_char": false,
+      "has_word": true
+    }
+  ],
+  "frontend\\src\\game\\equipmentConfig.js": [
+    {
+      "line": 5,
+      "content": "{ id: 'hands', name: 'HANDS / ELDİVEN', icon: 'crosshair' },",
+      "has_char": true,
+      "has_word": false
+    },
+    {
+      "line": 7,
+      "content": "{ id: 'backpack', name: 'BACKPACK / ÇANTA', icon: 'backpack' },",
+      "has_char": true,
+      "has_word": false
+    },
+    {
+      "line": 12,
+      "content": "helm_t1: { id: 'helm_t1', name: 'Taktik Kask', slot: 'head', tier: 1, levelReq: 3, statLabel: '+3 Zırh', desc: 'Hafif çelik takviyeli koruyucu başlık.' },",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 13,
+      "content": "helm_t2: { id: 'helm_t2', name: 'Kompozit Kask', slot: 'head', tier: 2, levelReq: 15, statLabel: '+6 Zırh', desc: 'Seramik katmanlı gelişmiş koruma başlığı.' },",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 14,
+      "content": "helm_t3: { id: 'helm_t3', name: 'Balistik Ağır Kask', slot: 'head', tier: 3, levelReq: 30, statLabel: '+9 Zırh', desc: 'En üst düzey balistik kompozit baş zırhı.' },",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 17,
+      "content": "vest_t1: { id: 'vest_t1', name: 'Hafif Hücum Yeleği', slot: 'body', tier: 1, levelReq: 3, statLabel: '+6 Zırh', desc: 'Temel balistik koruma sağlayan taktik yelek.' },",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 18,
+      "content": "vest_t2: { id: 'vest_t2', name: 'Taktik Plaka Taşıyıcı', slot: 'body', tier: 2, levelReq: 15, statLabel: '+12 Zırh', desc: 'Seramik plakalarla donatılmış gövde zırhı.' },",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 19,
+      "content": "vest_t3: { id: 'vest_t3', name: 'Ağır Taarruz Yeleği', slot: 'body', tier: 3, levelReq: 30, statLabel: '+18 Zırh', desc: 'Ağır muharebe şartları için kompozit gövde zırhı.' },",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 22,
+      "content": "pants_t1: { id: 'pants_t1', name: 'Güçlendirilmiş Pantolon', slot: 'legs', tier: 1, levelReq: 3, statLabel: '+3 Zırh', desc: 'Kevlar liflerle örülmüş dayanıklı pantolon.' },",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 23,
+      "content": "pants_t2: { id: 'pants_t2', name: 'Muharebe Pantolonu', slot: 'legs', tier: 2, levelReq: 15, statLabel: '+6 Zırh', desc: 'Eklem korumalı taktik askeri pantolon.' },",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 24,
+      "content": "pants_t3: { id: 'pants_t3', name: 'Zırhlı Taarruz Pantolonu', slot: 'legs', tier: 3, levelReq: 30, statLabel: '+9 Zırh', desc: 'Kompozit bacak plakalarıyla donatılmış ağır alt zırh.' },",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 27,
+      "content": "gloves_t1: { id: 'gloves_t1', name: 'Taktik Atış Eldiveni', slot: 'hands', tier: 1, levelReq: 3, statLabel: '-%2 Doldurma', desc: 'Kavramayı artıran hafif şarjör doldurma eldiveni.' },",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 28,
+      "content": "gloves_t2: { id: 'gloves_t2', name: 'Hızlı Çekiş Eldiveni', slot: 'hands', tier: 2, levelReq: 15, statLabel: '-%4 Doldurma', desc: 'Silah hakimiyetini ve hızını artıran eldiven.' },",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 29,
+      "content": "gloves_t3: { id: 'gloves_t3', name: 'Hassas Kompozit Eldiven', slot: 'hands', tier: 3, levelReq: 30, statLabel: '-%6 Doldurma', desc: 'Maksimum hızlı şarjör değiştirme desteği.' },",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 32,
+      "content": "boots_t1: { id: 'boots_t1', name: 'Hafif Devriye Botu', slot: 'feet', tier: 1, levelReq: 3, statLabel: '+%1 Hız', desc: 'Aşınmaya dayanıklı esnek tabanlı bot.' },",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 33,
+      "content": "boots_t2: { id: 'boots_t2', name: 'Hızlı İntikal Botu', slot: 'feet', tier: 2, levelReq: 15, statLabel: '+%2 Hız', desc: 'Hızlı yer değiştirme sağlayan taktik bot.' },",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 34,
+      "content": "boots_t3: { id: 'boots_t3', name: 'Taktik Taarruz Botu', slot: 'feet', tier: 3, levelReq: 30, statLabel: '+%3 Hız', desc: 'Ağır zeminlerde maksimum depar kabiliyeti.' },",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 37,
+      "content": "pack_t1: { id: 'pack_t1', name: 'Kompakt Sırt Çantası', slot: 'backpack', tier: 1, levelReq: 3, statLabel: '+%3 Dayanıklılık', desc: 'Ağırlık merkezini dengeleyerek stamina yeniler.' },",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 38,
+      "content": "pack_t2: { id: 'pack_t2', name: 'Saha Operasyon Çantası', slot: 'backpack', tier: 2, levelReq: 15, statLabel: '+%6 Dayanıklılık', desc: 'Ergonomik askeri yük dağıtım çantası.' },",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 39,
+      "content": "pack_t3: { id: 'pack_t3', name: 'Genişletilmiş Sefer Çantası', slot: 'backpack', tier: 3, levelReq: 30, statLabel: '+%9 Dayanıklılık', desc: 'En yüksek seviye depar ve stamina rejenerasyonu.' },",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 44,
+      "content": "{ id: 'fabric_t1', name: 'Balistik Kumaş', family: 'fabric', tier: 1 },",
+      "has_char": true,
+      "has_word": false
+    },
+    {
+      "line": 49,
+      "content": "{ id: 'plate_t1', name: 'Çelik Plaka', family: 'plate', tier: 1 },",
+      "has_char": true,
+      "has_word": false
+    },
+    {
+      "line": 54,
+      "content": "{ id: 'binding_t1', name: 'Naylon Kayış', family: 'binding', tier: 1 },",
+      "has_char": true,
+      "has_word": false
+    },
+    {
+      "line": 55,
+      "content": "{ id: 'binding_t2', name: 'Takviyeli Bağlantı', family: 'binding', tier: 2 },",
+      "has_char": true,
+      "has_word": false
+    },
+    {
+      "line": 56,
+      "content": "{ id: 'binding_t3', name: 'Titanyum Bağlantı', family: 'binding', tier: 3 },",
+      "has_char": true,
+      "has_word": false
+    },
+    {
+      "line": 64,
+      "content": "{ id: 'calibration_t1', name: 'T1 Kalibrasyon Kartuşu', family: 'calibration', tier: 1 },",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 65,
+      "content": "{ id: 'calibration_t2', name: 'T2 Kalibrasyon Kartuşu', family: 'calibration', tier: 2 },",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 66,
+      "content": "{ id: 'calibration_t3', name: 'T3 Kalibrasyon Kartuşu', family: 'calibration', tier: 3 },",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 72,
+      "content": "name: 'Asker S1 (Çaylak / Recruit)',",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 73,
+      "content": "role: 'Giriş Seviye Destek',",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 81,
+      "content": "desc: 'Hafif yan ateş desteği sağlar. Yakın mesafede sahibini korur.',",
+      "has_char": true,
+      "has_word": false
+    },
+    {
+      "line": 85,
+      "content": "name: 'Asker S2 (Devriye / Patrol)',",
+      "has_char": false,
+      "has_word": true
+    },
+    {
+      "line": 86,
+      "content": "role: 'Av Tüfeği Muhafızı',",
+      "has_char": true,
+      "has_word": false
+    },
+    {
+      "line": 88,
+      "content": "weapon: 'Pompalı Tüfek',",
+      "has_char": true,
+      "has_word": false
+    },
+    {
+      "line": 94,
+      "content": "desc: 'Yakın temas muharebesinde yüksek kitle hasarı sağlar.',",
+      "has_char": true,
+      "has_word": false
+    },
+    {
+      "line": 98,
+      "content": "name: 'Asker S3 (Piyade / Rifleman)',",
+      "has_char": false,
+      "has_word": true
+    },
+    {
+      "line": 107,
+      "content": "desc: 'Orta menzilde sürekli otomatik yaylım ateşiyle baskı kurar.',",
+      "has_char": true,
+      "has_word": false
+    },
+    {
+      "line": 111,
+      "content": "name: 'Asker S4 (Operatör / Operator)',",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 112,
+      "content": "role: 'Hızlı İntikal SMG',",
+      "has_char": true,
+      "has_word": false
+    },
+    {
+      "line": 120,
+      "content": "desc: 'Yüksek atış hızıyla hedefleri hızla eritir.',",
+      "has_char": true,
+      "has_word": false
+    },
+    {
+      "line": 124,
+      "content": "name: 'Asker S5 (Seçkin Muhafız / Elite)',",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 125,
+      "content": "role: 'Ağır Makineli Bastırma',",
+      "has_char": true,
+      "has_word": false
+    },
+    {
+      "line": 133,
+      "content": "desc: 'En yüksek can ve menzile sahip üst düzey askeri destek birimi.',",
+      "has_char": true,
+      "has_word": true
+    }
+  ],
+  "frontend\\src\\game\\lootModels.js": [
+    {
+      "line": 133,
+      "content": "const can = new THREE.Mesh(new THREE.CylinderGeometry(.12, .12, .42, 12), matCasing);",
+      "has_char": false,
+      "has_word": true
+    },
+    {
+      "line": 134,
+      "content": "can.position.y = .25;",
+      "has_char": false,
+      "has_word": true
+    },
+    {
+      "line": 135,
+      "content": "can.castShadow = true;",
+      "has_char": false,
+      "has_word": true
+    },
+    {
+      "line": 138,
+      "content": "g.add(can, ring);",
+      "has_char": false,
+      "has_word": true
+    }
+  ],
+  "frontend\\src\\hooks\\useSession.js": [
+    {
+      "line": 111,
+      "content": "clearTimeout(timeout); teardown(); setError(message.code === 1013 ? 'The server is full. Try again shortly.' : 'The server connection was lost. You can join again.'); setMode('lobby'); setState(null); engineRef.current?.setMode('lobby', weapon, skin);",
+      "has_char": false,
+      "has_word": true
+    }
+  ],
+  "frontend\\public\\index.html": [
+    {
+      "line": 18,
+      "content": "Only files inside the `public` folder can be referenced from the HTML.",
+      "has_char": false,
+      "has_word": true
+    },
+    {
+      "line": 35,
+      "content": "You can add webfonts, meta tags, or analytics to this file.",
+      "has_char": false,
+      "has_word": true
+    }
+  ],
+  "backend\\equipment.py": [
+    {
+      "line": 17,
+      "content": "'level_req': 1, 'base_stat': {'armor': 4}, 'description': 'Mat çelik yuvarlak kabuk, kumaş çene kayışı.'",
+      "has_char": true,
+      "has_word": false
+    },
+    {
+      "line": 21,
+      "content": "'level_req': 15, 'base_stat': {'armor': 6}, 'description': 'Köşeli balistik kabuk, yan raylar, alın pedi.'",
+      "has_char": true,
+      "has_word": false
+    },
+    {
+      "line": 25,
+      "content": "'level_req': 30, 'base_stat': {'armor': 8}, 'description': 'Kesik yan profilli kompozit kabuk, kapalı bağlantılar.'",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 31,
+      "content": "'level_req': 1, 'base_stat': {'armor': 10}, 'description': 'İnce kumaş panel, görünür dikiş, iki basit cep.'",
+      "has_char": true,
+      "has_word": false
+    },
+    {
+      "line": 35,
+      "content": "'level_req': 15, 'base_stat': {'armor': 15}, 'description': 'Ön ve arka balistik plaka, üç şarjör cebi, tokalı omuz.'",
+      "has_char": true,
+      "has_word": false
+    },
+    {
+      "line": 39,
+      "content": "'level_req': 30, 'base_stat': {'armor': 20}, 'description': 'Segmentli göğüs plaka, yan koruma, kompakt kapalı cepler.'",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 45,
+      "content": "'level_req': 1, 'base_stat': {'armor': 6}, 'description': 'Kumaş uyluk pedleri ve küçük diz kapakları.'",
+      "has_char": true,
+      "has_word": false
+    },
+    {
+      "line": 49,
+      "content": "'level_req': 15, 'base_stat': {'armor': 9}, 'description': 'Kayışlı sert dizlik, dış uyluk plakası.'",
+      "has_char": true,
+      "has_word": false
+    },
+    {
+      "line": 53,
+      "content": "'level_req': 30, 'base_stat': {'armor': 12}, 'description': 'Hareketli segmentli uyluk ve diz plakaları.'",
+      "has_char": true,
+      "has_word": false
+    },
+    {
+      "line": 59,
+      "content": "'level_req': 1, 'base_stat': {'reload_speed': 0.02}, 'description': 'Parmakları açık kumaş, deri avuç.'",
+      "has_char": true,
+      "has_word": false
+    },
+    {
+      "line": 63,
+      "content": "'level_req': 15, 'base_stat': {'reload_speed': 0.04}, 'description': 'Tam parmak, kauçuk eklem koruyucu.'",
+      "has_char": true,
+      "has_word": false
+    },
+    {
+      "line": 67,
+      "content": "'level_req': 30, 'base_stat': {'reload_speed': 0.06}, 'description': 'Kompozit eklem, takviyeli avuç, bilekte kısa kilit.'",
+      "has_char": true,
+      "has_word": false
+    },
+    {
+      "line": 73,
+      "content": "'level_req': 1, 'base_stat': {'movement_speed': 0.01}, 'description': 'Deri/kumaş, sade bağcık ve esnek taban.'",
+      "has_char": true,
+      "has_word": false
+    },
+    {
+      "line": 77,
+      "content": "'level_req': 15, 'base_stat': {'movement_speed': 0.02}, 'description': 'Kalın bilek desteği, tırtıklı taban, burun kaplaması.'",
+      "has_char": true,
+      "has_word": false
+    },
+    {
+      "line": 81,
+      "content": "'level_req': 30, 'base_stat': {'movement_speed': 0.03}, 'description': 'Hafif katmanlı bilek koruma, kapalı bağcık, kompozit burun.'",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 87,
+      "content": "'level_req': 1, 'base_stat': {'stamina_regen': 0.03}, 'description': 'Küçük rulo kapaklı kumaş çanta.'",
+      "has_char": true,
+      "has_word": false
+    },
+    {
+      "line": 91,
+      "content": "'level_req': 15, 'base_stat': {'stamina_regen': 0.06}, 'description': 'Yan cepli dikdörtgen ikmal çantası.'",
+      "has_char": true,
+      "has_word": false
+    },
+    {
+      "line": 95,
+      "content": "'level_req': 30, 'base_stat': {'stamina_regen': 0.09}, 'description': 'Sert sırt paneli, üç bölmeli kompakt operasyon çantası.'",
+      "has_char": true,
+      "has_word": false
+    },
+    {
+      "line": 109,
+      "content": "'fabric_t1': {'id': 'fabric_t1', 'name': 'Balistik Kumaş', 'family': 'fabric', 'tier': 1},",
+      "has_char": true,
+      "has_word": false
+    },
+    {
+      "line": 114,
+      "content": "'plate_t1': {'id': 'plate_t1', 'name': 'Çelik Plaka', 'family': 'plate', 'tier': 1},",
+      "has_char": true,
+      "has_word": false
+    },
+    {
+      "line": 119,
+      "content": "'binding_t1': {'id': 'binding_t1', 'name': 'Naylon Kayış', 'family': 'binding', 'tier': 1},",
+      "has_char": true,
+      "has_word": false
+    },
+    {
+      "line": 120,
+      "content": "'binding_t2': {'id': 'binding_t2', 'name': 'Takviyeli Bağlantı', 'family': 'binding', 'tier': 2},",
+      "has_char": true,
+      "has_word": false
+    },
+    {
+      "line": 121,
+      "content": "'binding_t3': {'id': 'binding_t3', 'name': 'Titanyum Bağlantı', 'family': 'binding', 'tier': 3},",
+      "has_char": true,
+      "has_word": false
+    },
+    {
+      "line": 129,
+      "content": "'calibration_t1': {'id': 'calibration_t1', 'name': 'T1 Kalibrasyon Kartuşu', 'family': 'calibration', 'tier': 1},",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 130,
+      "content": "'calibration_t2': {'id': 'calibration_t2', 'name': 'T2 Kalibrasyon Kartuşu', 'family': 'calibration', 'tier': 2},",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 131,
+      "content": "'calibration_t3': {'id': 'calibration_t3', 'name': 'T3 Kalibrasyon Kartuşu', 'family': 'calibration', 'tier': 3},",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 338,
+      "content": "return False, \"Geçersiz ekipman tarifi.\"",
+      "has_char": true,
+      "has_word": false
+    },
+    {
+      "line": 342,
+      "content": "return False, f\"Seviyeniz yetersiz. Gerekli seviye: {recipe['level_req']}.\"",
+      "has_char": false,
+      "has_word": true
+    },
+    {
+      "line": 350,
+      "content": "return False, f\"Yetersiz altın. Gerekli: {gold_cost} altın.\"",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 359,
+      "content": "return False, f\"Yetersiz kalibrasyon kartuşu: {part_id} ({calibration.get(part_id, 0)}/{needed}).\"",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 362,
+      "content": "return False, f\"Yetersiz malzeme: {part_id} ({parts.get(part_id, 0)}/{needed}).\"",
+      "has_char": false,
+      "has_word": true
+    },
+    {
+      "line": 381,
+      "content": "return True, f\"{EQUIPMENT_CATALOG[item_id]['name']} başarıyla üretildi!\"",
+      "has_char": true,
+      "has_word": false
+    },
+    {
+      "line": 388,
+      "content": "return False, \"Bu ekipmana sahip değilsiniz.\"",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 398,
+      "content": "return False, f\"Yükseltme için seviyeniz yetersiz. Gerekli seviye: {recipe['req_player_level']}.\"",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 402,
+      "content": "return False, f\"Yetersiz altın. Gerekli: {gold_cost} altın.\"",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 410,
+      "content": "return False, f\"Yetersiz kalibrasyon kartuşu: {part_id} ({calibration.get(part_id, 0)}/{needed}).\"",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 413,
+      "content": "return False, f\"Yetersiz malzeme: {part_id} ({parts.get(part_id, 0)}/{needed}).\"",
+      "has_char": false,
+      "has_word": true
+    },
+    {
+      "line": 424,
+      "content": "return True, f\"{EQUIPMENT_CATALOG[item_id]['name']} seviye +{recipe['target_level']} yapıldı!\"",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 430,
+      "content": "return False, \"Geçersiz ekipman yuvası.\"",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 436,
+      "content": "return True, f\"{slot.capitalize()} yuvasındaki ekipman çıkarıldı.\"",
+      "has_char": true,
+      "has_word": false
+    },
+    {
+      "line": 439,
+      "content": "return False, \"Bu ekipmana sahip değilsiniz.\"",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 443,
+      "content": "return False, \"Ekipman bu yuvaya takılamaz.\"",
+      "has_char": true,
+      "has_word": false
+    },
+    {
+      "line": 446,
+      "content": "return True, f\"{info['name']} kuşandı.\"",
+      "has_char": true,
+      "has_word": false
+    },
+    {
+      "line": 455,
+      "content": "return False, \"Farklı türdeki malzemeler birbirine dönüştürülemez.\"",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 461,
+      "content": "return False, \"Sadece bir üst kademe kalibrasyon kartuşuna dönüştürülebilir.\"",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 466,
+      "content": "return False, f\"Dönüşüm için en az 3 adet {source_id} gereklidir.\"",
+      "has_char": true,
+      "has_word": false
+    },
+    {
+      "line": 468,
+      "content": "return False, f\"Yetersiz altın. Gerekli: {gold_cost} altın.\"",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 473,
+      "content": "return True, f\"3 adet {source_id} başarıyla 1 adet {target_id} kartuşuna dönüştürüldü.\"",
+      "has_char": true,
+      "has_word": false
+    },
+    {
+      "line": 479,
+      "content": "return False, \"Geçersiz malzeme.\"",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 482,
+      "content": "return False, \"Yalnızca aynı malzeme ailesi içinde dönüşüm yapılabilir.\"",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 485,
+      "content": "return False, \"Sadece bir üst kademe malzemeye dönüştürülebilir.\"",
+      "has_char": true,
+      "has_word": false
+    },
+    {
+      "line": 490,
+      "content": "return False, f\"Dönüşüm için en az 3 adet {s_info['name']} gereklidir.\"",
+      "has_char": true,
+      "has_word": false
+    },
+    {
+      "line": 492,
+      "content": "return False, f\"Yetersiz altın. Gerekli: {gold_cost} altın.\"",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 497,
+      "content": "return True, f\"3 adet {s_info['name']} başarıyla 1 adet {t_info['name']} malzemesine dönüştürüldü.\"",
+      "has_char": true,
+      "has_word": false
+    },
+    {
+      "line": 503,
+      "content": "return False, \"Geçersiz satış miktarı.\", 0",
+      "has_char": true,
+      "has_word": false
+    },
+    {
+      "line": 512,
+      "content": "return False, \"Yetersiz kalibrasyon kartuşu.\", 0",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 517,
+      "content": "return False, \"Yetersiz malzeme.\", 0",
+      "has_char": false,
+      "has_word": true
+    },
+    {
+      "line": 521,
+      "content": "return True, f\"{amount}x malzeme satıldı. +{total_gold} altın kazanıldı.\", total_gold",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 529,
+      "content": "return False, \"Yetersiz silah parçası.\", 0",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 542,
+      "content": "return True, f\"{amount}x silah parçası satıldı. +{total_gold} altın kazanıldı.\", total_gold",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 548,
+      "content": "return False, \"Bu ekipmana sahip değilsiniz.\", 0",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 551,
+      "content": "return False, \"Geçersiz ekipman.\", 0",
+      "has_char": true,
+      "has_word": false
+    },
+    {
+      "line": 568,
+      "content": "return True, f\"{info['name']} satıldı. +{total_gold} altın kazanıldı.\", total_gold",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 572,
+      "content": "return False, \"Geçersiz sarf malzemesi.\", 0",
+      "has_char": true,
+      "has_word": false
+    },
+    {
+      "line": 576,
+      "content": "return False, \"Yetersiz tıbbi malzeme.\", 0",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 580,
+      "content": "return True, f\"{amount}x sarf malzemesi satıldı. +{total_gold} altın kazanıldı.\", total_gold",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 584,
+      "content": "return False, \"Başlangıç silahı (Glock 18) satılamaz.\", 0",
+      "has_char": true,
+      "has_word": false
+    },
+    {
+      "line": 586,
+      "content": "return False, \"Geçersiz veya satılamayan silah.\", 0",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 589,
+      "content": "return False, \"Bu silaha sahip değilsiniz.\", 0",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 601,
+      "content": "return True, f\"{item_key.upper()} silahı satıldı. +{total_gold} altın kazanıldı.\", total_gold",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 603,
+      "content": "return False, \"Geçersiz kategori.\", 0",
+      "has_char": true,
+      "has_word": false
+    }
+  ],
+  "backend\\local_run.py": [
+    {
+      "line": 30,
+      "content": "# for local in-memory use so the included admin routes can complete startup.",
+      "has_char": false,
+      "has_word": true
+    }
+  ],
+  "backend\\loot.py": [
+    {
+      "line": 50,
+      "content": "return False, 'Bu sarf malzemesi şu anda kullanılamaz.'",
+      "has_char": true,
+      "has_word": false
+    },
+    {
+      "line": 53,
+      "content": "return True, 'Enerji içeceği zaten kullanıldı.'",
+      "has_char": true,
+      "has_word": false
+    },
+    {
+      "line": 56,
+      "content": "return False, 'Enerji içeceği stoğunuz yok.'",
+      "has_char": true,
+      "has_word": false
+    },
+    {
+      "line": 67,
+      "content": "return True, 'ENERGY DRINK: 60 SN ×2 DAYANIKLILIK YENİLENMESİ.'",
+      "has_char": true,
+      "has_word": true
+    }
+  ],
+  "backend\\server.py": [
+    {
+      "line": 296,
+      "content": "raise HTTPException(status_code=401, detail='Giriş yapmanız gerekiyor.')",
+      "has_char": true,
+      "has_word": false
+    },
+    {
+      "line": 363,
+      "content": "return {'success': True, 'message': 'Asker geri çekildi.', 'progress': target if not is_live else None}",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 366,
+      "content": "raise HTTPException(status_code=400, detail='Bu askere sahip değilsiniz.')",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 371,
+      "content": "raise HTTPException(status_code=400, detail='En fazla beş asker göreve çağrılabilir.')",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 379,
+      "content": "return {'success': True, 'message': f\"{SOLDIER_CATALOG[body.tier]['name']} göreve çağrıldı!\", 'progress': target if not is_live else None}",
+      "has_char": true,
+      "has_word": false
+    },
+    {
+      "line": 500,
+      "content": "# A browser can reconnect while its prior socket is still flushing. Read",
+      "has_char": false,
+      "has_word": true
+    },
+    {
+      "line": 507,
+      "content": "await ws.close(code=1013, reason='Sunucu dolu.')",
+      "has_char": false,
+      "has_word": true
+    },
+    {
+      "line": 588,
+      "content": "await game.send(player, {'type': 'action_error', 'message': 'Asker kimliği gerekli.'})",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 599,
+      "content": "await game.send(player, {'type': 'action_error', 'message': 'Asker kimliği gerekli.'})",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 632,
+      "content": "await game.send(player, {'type': 'action_error', 'message': 'Only the alliance leader can change friendly fire.'})",
+      "has_char": false,
+      "has_word": true
+    }
+  ],
+  "backend\\soldier.py": [
+    {
+      "line": 113,
+      "content": "if len(roster) >= 5: return False, 'En fazla beş askere sahip olabilirsiniz.', None",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 114,
+      "content": "if player.get('gold', 0) < 500: return False, 'Yetersiz altın. Gerekli: 500 altın.', None",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 118,
+      "content": "return True, 'S1 asker kadroya katıldı.', record",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 122,
+      "content": "if not record: return False, 'Asker bulunamadı.', None",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 124,
+      "content": "if tier >= 5: return False, 'Asker zaten maksimum seviyede.', None",
+      "has_char": false,
+      "has_word": true
+    },
+    {
+      "line": 126,
+      "content": "if player.get('level', 1) < next_spec['level_req']: return False, f\"Gerekli seviye: {next_spec['level_req']}.\", None",
+      "has_char": false,
+      "has_word": true
+    },
+    {
+      "line": 127,
+      "content": "if player.get('gold', 0) < cost: return False, f\"Yetersiz altın. Gerekli: {cost} altın.\", None",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 129,
+      "content": "return True, f\"Asker S{tier + 1} seviyesine yükseltildi.\", record",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 133,
+      "content": "if not record: return False, 'Asker bulunamadı.'",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 136,
+      "content": "if len(ids) >= 5: return False, 'En fazla beş asker görevde olabilir.'",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 139,
+      "content": "ensure_owned_soldiers(player); return True, 'Asker göreve çağrıldı.' if active else 'Asker geri çekildi.'",
+      "has_char": true,
+      "has_word": true
+    }
+  ],
+  "backend\\spawning.py": [
+    {
+      "line": 20,
+      "content": "# A crowded sanctuary can share a spawn cell; it remains enemy-free.",
+      "has_char": false,
+      "has_word": true
+    }
+  ],
+  "backend\\tests\\test_backend_short_smoke.py": [
+    {
+      "line": 1,
+      "content": "\"\"\"Kısa odaklı DEADZONE backend smoke + birim testleri (uzun e2e yok).\"\"\"",
+      "has_char": true,
+      "has_word": false
+    }
+  ],
+  "backend\\tests\\test_boss_features_focus.py": [
+    {
+      "line": 336,
+      "content": "# Module: player weapons can damage large bosses; dead bosses stop taking damage and get respawn timer",
+      "has_char": false,
+      "has_word": true
+    }
+  ],
+  "backend\\tests\\test_enemy_balance_short_focus.py": [
+    {
+      "line": 259,
+      "content": "# Chain reaction sanity: a nearby weak immolator can trigger its own explosion once.",
+      "has_char": false,
+      "has_word": true
+    }
+  ],
+  "backend\\tests\\test_live_ws_focus.py": [
+    {
+      "line": 1,
+      "content": "\"\"\"Module: public API + gerçek websocket akışında seq/ack/ping ve kısa çoklu istemci örneklemi.\"\"\"",
+      "has_char": true,
+      "has_word": false
+    },
+    {
+      "line": 212,
+      "content": "f\"WS sample (6 oyuncu/5s): states={state_count}, freq_hz={freq:.2f}, \"",
+      "has_char": false,
+      "has_word": true
+    }
+  ],
+  "backend\\tests\\test_network_channel_focus.py": [
+    {
+      "line": 1,
+      "content": "\"\"\"Module: network.ClientChannel + engine tick isolation kısa odaklı testler.\"\"\"",
+      "has_char": true,
+      "has_word": false
+    },
+    {
+      "line": 104,
+      "content": "# Uvicorn can surface the underlying websockets normal-close exception.",
+      "has_char": false,
+      "has_word": true
+    }
+  ],
+  "backend\\tests\\test_skin_ws_contract.py": [
+    {
+      "line": 1,
+      "content": "\"\"\"Skin seçim ve websocket senkronizasyon sözleşmesi testleri.\"\"\"",
+      "has_char": true,
+      "has_word": false
+    },
+    {
+      "line": 73,
+      "content": "# Module: /api/join skin doğrulama + varsayılan skin davranışı",
+      "has_char": true,
+      "has_word": false
+    },
+    {
+      "line": 95,
+      "content": "# Module: gerçek iki websocket istemcide skin senkronizasyonu + shot/kill/respawn sözleşmesi",
+      "has_char": true,
+      "has_word": false
+    },
+    {
+      "line": 103,
+      "content": "# Her iki istemci de karşı oyuncunun skin bilgisini görmeli.",
+      "has_char": true,
+      "has_word": false
+    },
+    {
+      "line": 115,
+      "content": "# Yerel skin doğrulaması.",
+      "has_char": true,
+      "has_word": false
+    },
+    {
+      "line": 119,
+      "content": "# Oyuncu 1 ateş edince oyuncu 2 bunu event/firing olarak görmeli.",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 142,
+      "content": "# PvP için iki oyuncunun da korumasını kaldır.",
+      "has_char": true,
+      "has_word": false
+    },
+    {
+      "line": 146,
+      "content": "# Oyuncu 1, oyuncu 2'yi hedefleyip öldürsün.",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 171,
+      "content": "# Respawn sonrası me.skin ve me.weapon korunmalı.",
+      "has_char": true,
+      "has_word": false
+    }
+  ],
+  "backend\\tests\\test_soldier_ws_account_regression.py": [
+    {
+      "line": 103,
+      "content": "assert receive_until(ws, 'action_success')['message'] == 'S1 asker kadroya katıldı.'",
+      "has_char": true,
+      "has_word": true
+    },
+    {
+      "line": 111,
+      "content": "assert 'En fazla beş' in receive_until(ws, 'action_error')['message']",
+      "has_char": true,
+      "has_word": false
+    }
+  ]
+}

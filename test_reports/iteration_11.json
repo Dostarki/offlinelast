@@ -1,0 +1,40 @@
+{
+  "summary": "Post-migration environment smoke test for LastZHood on preview URL. Backend (13/13 pytest) and frontend smoke flows (home, loadout, wallet modal, admin login) all pass. Fixed one env-level blocker: ADMIN_PROXY_ORIGIN/CORS_ORIGINS did not include the Cloudflare-rewritten Origin host, which caused /api/admin/login and /api/auth/challenge to 403/400 externally.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_iteration11_installation_smoke.py",
+    "/app/test_reports/pytest/iteration_11_install_smoke.xml"
+  ],
+  "action_items": [
+    "Keep ADMIN_PROXY_ORIGIN=https://emergent-build-131.cluster-12.preview.emergentcf.cloud and append the same host to CORS_ORIGINS whenever the Cloudflare proxy host changes (e.g. on redeploy to a different cluster or on lastzhood.fun cutover). Document this in deployment notes.",
+    "Harmless console warnings observed on first load: 'Reown Config fetch failed' (remote project config CF-blocked, falls back to local), 'WalletConnect Core already initialized' (StrictMode double init), and 'Lit is in dev mode'. Not blocking but worth filing a follow-up to suppress in production build.",
+    "Real injected-wallet sign/pay flow still untestable without a real wallet with Robinhood Chain Mainnet (4663) ETH; validate manually before lastzhood.fun go-live."
+  ],
+  "critical_code_review_comments": [
+    "Admin Origin check in /app/backend/admin_auth.py line 23 relies on a hardcoded set {ADMIN_ORIGIN, ADMIN_PROXY_ORIGIN}. Since Cloudflare rewrites the Origin to a *.preview.emergentcf.cloud host that is not the public URL, the two env vars must be kept in sync with that proxy host or external login breaks silently (403 'Invalid request origin.'). Consider accepting a comma-separated allowlist or parsing CORS_ORIGINS to reduce the chance of this misconfiguration recurring.",
+    "SIWE challenge in player_auth.py requires the frontend to pass the correct `domain` and `uri` fields in the body AND they must be in CORS_ORIGINS. Confirmed the frontend already does this via walletConfig/REACT_APP_BACKEND_URL; just document that CORS_ORIGINS plays a double role (CORS + SIWE allowlist).",
+    "/api/join correctly guards with 401 WALLET_SIGNATURE_REQUIRED when no SIWE session cookie present - good."
+  ],
+  "updated_files": [
+    "/app/backend/.env (ADMIN_PROXY_ORIGIN + CORS_ORIGINS now include the emergentcf.cloud proxy host)",
+    "/app/backend/tests/test_iteration11_installation_smoke.py (new pytest suite)"
+  ],
+  "success_rate": {
+    "backend": "100% (13/13 pytest)",
+    "frontend": "100% of smoke flows tested (home load, start-game->loadout, wallet modal open+close, admin password login)"
+  },
+  "test_credentials": "Admin panel password: 123123. No real wallet available; SIWE verify + paid-join flows cannot be executed end-to-end.",
+  "seed_data_creation": "None.",
+  "retest_needed": false,
+  "should_main_agent_self_test": true,
+  "context_for_next_testing_agent": "The preview URL https://emergent-build-131.preview.emergentagent.com is fronted by Cloudflare which rewrites Origin to https://emergent-build-131.cluster-12.preview.emergentcf.cloud. Both hosts must be present in CORS_ORIGINS and ADMIN_PROXY_ORIGIN must equal the cf.cloud host for /api/admin/login + SIWE to work externally. The previous iteration's MetaMask SDK 'invalid border=0' / 'openapi_fetch.default is not a function' crash did NOT reproduce - home page loads cleanly, Start Game -> /loadout works, Connect Wallet modal opens with MetaMask/Rainbow/Coinbase/WalletConnect/Browser Wallet entries and Escape dismisses it without firing settings. All public endpoints (/api/, /api/status, /api/weapons, /api/world, /api/leaderboard, /api/bosses, /api/offgame-market/catalog) return 200. /api/offgame-market/catalog.capabilities.payment_mode = 'native_eth_quote', chain_id=4663.",
+  "rca of the issue": "Issue: External /api/admin/login returned 403 'Invalid request origin.' and /api/auth/challenge returned 400 'Sign-in domain and URI must match an allowed application origin.' even with Origin=public preview URL. Repro: curl -XPOST public_url/api/admin/login -H 'Origin: public_url' -d '{\"password\":\"123123\"}'. Root cause: Cloudflare ingress rewrites the Origin header forwarded to the backend to https://emergent-build-131.cluster-12.preview.emergentcf.cloud (verified via a temporary debug endpoint echoing request.headers['origin']). backend/.env had ADMIN_PROXY_ORIGIN set to the public preview URL (which never actually reaches the pod) and CORS_ORIGINS only had the public URL. Fix: set ADMIN_PROXY_ORIGIN to the emergentcf.cloud host and append it to CORS_ORIGINS, then supervisorctl restart backend. After restart, admin login returns 200 and SIWE challenge returns a valid nonce. Mitigation: encode the proxy-origin mapping in deployment docs so lastzhood.fun deploy sets ADMIN_PROXY_ORIGIN to whatever Origin the production edge actually forwards."
+}

@@ -1,0 +1,70 @@
+{
+  "summary": "Wallet connect regression retest completed on external preview. Core Connect Wallet modal now opens from header and lobby across responsive widths, but wallet-option deep paths still fail (runtime crash on option click; WalletConnect QR path not rendered). Backend SIWE mainnet/origin/replay/session guards passed with real signed challenge using disposable wallet.",
+  "backend_issues": {
+    "critical": [],
+    "minor": [
+      {
+        "endpoint": "/app/backend/tests/test_market_durability_regression.py",
+        "issue": "Requested durability regression suite could not run in this environment because dependency 'mongomock_motor' is missing.",
+        "priority": "HIGH"
+      }
+    ]
+  },
+  "frontend_issues": {
+    "ui_bugs": [
+      {
+        "component": "RainbowKit modal wallet option selection",
+        "issue": "Selecting wallet options (reproduced during WalletConnect/MetaMask deep path) triggers runtime page crash overlay: 'invalid border=0'.",
+        "selector": "[data-testid='header-wallet-connect-btn'] -> text=WalletConnect / text=MetaMask",
+        "priority": "CRITICAL"
+      }
+    ],
+    "integration_issues": [
+      {
+        "flow": "WalletConnect connection path",
+        "issue": "Wallet list renders, but QR/scan step was not shown; no explicit relay/origin message surfaced in UI. Needs deeper RainbowKit/WC modal rendering RCA.",
+        "affected_selectors": [
+          "[data-testid='header-wallet-connect-btn']",
+          "text=WalletConnect"
+        ]
+      }
+    ],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_wallet_auth_mainnet_external.py",
+    "/app/backend/tests/test_wallet_network_guards.py",
+    "/app/backend/tests/test_market_durability_regression.py",
+    "/app/frontend/src/components/OffgameMarketModal.test.jsx",
+    "/app/frontend/src/App.settings.test.jsx",
+    "/app/test_reports/pytest/wallet_backend_results.xml",
+    "/app/test_reports/wallet-build.log"
+  ],
+  "action_items": [
+    "Fix runtime crash triggered from RainbowKit option click ('invalid border=0') and verify no crash for MetaMask/Rainbow/Coinbase/WalletConnect.",
+    "Validate WalletConnect QR relay flow end-to-end (project ID + modal QR render + pairing state) on preview origin.",
+    "Install/restore test dependency mongomock_motor (or adjust suite) so requested market durability regression can execute.",
+    "Keep current modal-open behavior from header-wallet-connect-btn and wallet-connect-btn unchanged (this part now works)."
+  ],
+  "critical_code_review_comments": [
+    "Frontend test gap existed for RainbowKit provider hooks in App.settings.test.jsx; added explicit test-only mock for useConnectModal/useAccountModal/useChainModal.",
+    "Added focused regression assertion for quote chain mismatch guard in OffgameMarketModal.test.jsx to prevent wrong-chain payment attempts.",
+    "wallet-build.log contains only build-start lines; compilation success/failure is not evidenced from this log alone."
+  ],
+  "updated_files": [
+    "/app/backend/tests/test_wallet_auth_mainnet_external.py",
+    "/app/backend/tests/test_wallet_network_guards.py",
+    "/app/frontend/src/App.settings.test.jsx",
+    "/app/frontend/src/components/OffgameMarketModal.test.jsx",
+    "/app/test_reports/iteration_7.json"
+  ],
+  "success_rate": {
+    "backend": "85%",
+    "frontend": "70%"
+  },
+  "seed_data_creation": "No persistent seeded business data created. Auth tests used disposable unfunded ephemeral wallets only.",
+  "retest_needed": true,
+  "should_main_agent_self_test": false,
+  "context_for_next_testing_agent": "Core modal open bug is fixed (header/lobby, repeated open/close, Escape no settings jump, responsive widths good). Remaining blocker is deep connector action causing runtime crash and missing WalletConnect QR step visibility. Re-run browser test specifically on connector-option click and inspect frontend bundle stack for invalid border prop source.",
+  "rca of the issue": "Reproduction: /loadout -> Connect Wallet -> click WalletConnect (or MetaMask path after reopen) -> runtime overlay appears with 'invalid border=0' and React root error. This indicates a rendering/runtime incompatibility in connector-option path (likely downstream wallet modal content) rather than the initial modal opener. Mitigation: inspect built bundle stack frame around reported location and component rendering border attribute; then rerun connector deep-path e2e."
+}

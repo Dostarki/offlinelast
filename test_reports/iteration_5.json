@@ -1,0 +1,83 @@
+{
+  "summary": "Both backend+frontend tested on public URL. Core gameplay join/inventory flows work, but admin auth hardening checks exposed critical gaps and an inventory toggle UX bug on mobile after Escape/button interaction.",
+  "backend_issues": {
+    "critical": [
+      {
+        "endpoint": "/api/admin/login",
+        "issue": "Set-Cookie observed externally as SameSite=None; Partitioned (not SameSite=Strict as required).",
+        "priority": "CRITICAL"
+      },
+      {
+        "endpoint": "/api/admin/login",
+        "issue": "Brute-force lockout behavior was inconsistent across runs and quickly persisted to valid-login denial (429). Could not reliably reset login_attempts due inaccessible DB URI in test runner.",
+        "priority": "HIGH"
+      },
+      {
+        "endpoint": "WS equip flow (/api/ws/{token})",
+        "issue": "Switch-back ammo persistence check failed: after returning to M4, ammo did not preserve prior per-slot amount in one real run (expected preserved, observed mismatch).",
+        "priority": "HIGH"
+      }
+    ],
+    "minor": [
+      {
+        "endpoint": "/api/admin/settings",
+        "issue": "Origin/validation guards behaved correctly in tested cases (missing/wrong Origin 403, invalid payload 422)."
+      },
+      {
+        "endpoint": "/api/join + /api/ws/{token}",
+        "issue": "Join forced default Glock18 and 10-slot inventory loaded correctly; equip to M134 worked in real session."
+      }
+    ]
+  },
+  "frontend_issues": {
+    "ui_bugs": [
+      {
+        "component": "Mobile HUD + Inventory dialog",
+        "issue": "Reproduced toggle issue: after Escape, inventory state became inconsistent; immediate visibility stayed true, then HUD inventory button click flipped to hidden and did not reopen after wait.",
+        "selector": "[data-testid='hud-inventory-button'], [data-testid='inventory-dialog']",
+        "priority": "HIGH"
+      }
+    ],
+    "integration_issues": [
+      {
+        "flow": "Admin login via /admin",
+        "issue": "Valid password blocked by active lockout (429) during UI run, so dashboard/settings/bot controls/logout full UI path could not be completed in this iteration.",
+        "affected_selectors": [
+          "[data-testid='admin-password-input']",
+          "[data-testid='admin-login-submit']",
+          "[data-testid='admin-error']"
+        ]
+      }
+    ],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_iteration5_admin_inventory_world.py",
+    "/app/test_reports/pytest/pytest_results.xml"
+  ],
+  "action_items": [
+    "Investigate cookie policy at edge/proxy: admin cookies must remain Secure+HttpOnly+SameSite=Strict on public response.",
+    "Stabilize and verify admin lockout lifecycle (exact threshold/TTL/cleanup) and provide deterministic cleanup path for automated tests.",
+    "Fix mobile Escape + inventory button state race/toggle behavior in App keyboard/dialog interaction.",
+    "Recheck WS equip slot persistence for ammo/reserve across switch-away/switch-back under cooldown timing."
+  ],
+  "critical_code_review_comments": [
+    "admin_auth.py sets SameSite='strict' in code, but external response showed SameSite=None; likely ingress/proxy cookie rewriting risk.",
+    "Login attempt key uses request.client.host; behind proxies this can create non-deterministic/contaminated lockout behavior for shared test traffic.",
+    "Escape handler in App.js and dialog-level Escape close appear to conflict, causing mobile inventory/settings state inconsistencies."
+  ],
+  "updated_files": [
+    "/app/backend/tests/test_iteration5_admin_inventory_world.py",
+    "/app/test_reports/iteration_5.json"
+  ],
+  "success_rate": {
+    "backend": "29% (2 passed / 7 total, 1 skipped; lockout contamination affected admin suite)",
+    "frontend": "65% (core start/lobby/join/gameplay/inventory passed; admin and mobile inventory-edge flow failed)"
+  },
+  "seed_data_creation": "No persistent seed data created.",
+  "retest_needed": true,
+  "should_main_agent_self_test": false,
+  "main_agent_can_self_test": false,
+  "context_for_next_testing_agent": "Admin lockout was active at end of run (429 on valid login). Wait TTL expiry or clear login_attempts before rerunning admin UI/API checks. Mobile 390x844 bug repro is stable with HUD inventory button + Escape sequence. Desktop lobby had 6 skins, no weapon cards, game starts with Glock18, inventory shows 10 slots, M134 equip visible on HUD.",
+  "rca of the issue": "RCA-1 (mobile inventory): likely double Escape handling/state race between App-level keydown (window) and Dialog close flow. Repro: open inventory -> press Escape -> dialog visibility/state inconsistent -> HUD inventory click does not reopen as expected. RCA-2 (admin auth): cookie attributes are altered on external response path (SameSite=None+Partitioned seen), and lockout state persisted across attempts with no accessible cleanup route from runner, blocking deterministic auth regression flow."
+}

@@ -1,0 +1,468 @@
+{
+  "frontend\\src\\components\\AdminBots.jsx": [
+    {
+      "line": 2,
+      "content": "import { Bot, UserRound, Check, Minus, Plus } from 'lucide-react';",
+      "raw": "import { Bot, UserRound, Check, Minus, Plus } from 'lucide-react';"
+    },
+    {
+      "line": 11,
+      "content": "<form className=\"admin-bot-form\" onSubmit={e => { e.preventDefault(); if (valid) save({ ...settings, bot_count: Number(count) }); }}>",
+      "raw": "    <form className=\"admin-bot-form\" onSubmit={e => { e.preventDefault(); if (valid) save({ ...settings, bot_count: Number(count) }); }}>"
+    },
+    {
+      "line": 12,
+      "content": "<label htmlFor=\"admin-bot-count\" className=\"admin-field-label\" data-testid=\"admin-bot-count-label\">TARGET BOT COUNT</label>",
+      "raw": "      <label htmlFor=\"admin-bot-count\" className=\"admin-field-label\" data-testid=\"admin-bot-count-label\">TARGET BOT COUNT</label>"
+    },
+    {
+      "line": 13,
+      "content": "<div className=\"admin-bot-input-row\"><button type=\"button\" title=\"Decrease bot count\" aria-label=\"Decrease bot count\" data-testid=\"admin-bots-minus\" disabled={busy || Number(count) <= 0} onClick={() => setCount(Math.max(0, Number(count)-1))}><Minus size={17} /></button><input id=\"admin-bot-count\" type=\"number\" min=\"0\" max=\"200\" step=\"1\" required value={count} data-testid=\"admin-bot-count-input\" disabled={busy} onChange={e => setCount(e.target.value)} /><button type=\"button\" title=\"Increase bot count\" aria-label=\"Increase bot count\" data-testid=\"admin-bots-plus\" disabled={busy || Number(count) >= 200} onClick={() => setCount(Math.min(200, Number(count)+1))}><Plus size={17} /></button><button type=\"submit\" className=\"admin-apply\" data-testid=\"admin-bots-apply\" disabled={busy || !valid}><Check size={17} /> APPLY</button></div>",
+      "raw": "      <div className=\"admin-bot-input-row\"><button type=\"button\" title=\"Decrease bot count\" aria-label=\"Decrease bot count\" data-testid=\"admin-bots-minus\" disabled={busy || Number(count) <= 0} onClick={() => setCount(Math.max(0, Number(count)-1))}><Minus size={17} /></button><input id=\"admin-bot-count\" type=\"number\" min=\"0\" max=\"200\" step=\"1\" required value={count} data-testid=\"admin-bot-count-input\" disabled={busy} onChange={e => setCount(e.target.value)} /><button type=\"button\" title=\"Increase bot count\" aria-label=\"Increase bot count\" data-testid=\"admin-bots-plus\" disabled={busy || Number(count) >= 200} onClick={() => setCount(Math.min(200, Number(count)+1))}><Plus size={17} /></button><button type=\"submit\" className=\"admin-apply\" data-testid=\"admin-bots-apply\" disabled={busy || !valid}><Check size={17} /> APPLY</button></div>"
+    },
+    {
+      "line": 14,
+      "content": "<span className=\"admin-bot-live\" data-testid=\"admin-bots-progress\">{status?.bots ?? 0} ACTIVE / {settings.bot_count} TARGET <span>TOTAL LIMIT: 200</span></span>",
+      "raw": "      <span className=\"admin-bot-live\" data-testid=\"admin-bots-progress\">{status?.bots ?? 0} ACTIVE / {settings.bot_count} TARGET <span>TOTAL LIMIT: 200</span></span>"
+    },
+    {
+      "line": 20,
+      "content": "<span data-testid={`admin-participant-name-${p.id}`}>{p.bot ? <Bot size={16} /> : <UserRound size={16} />}{p.name}</span><span data-testid={`admin-participant-type-${p.id}`}>{p.bot ? 'BOT' : 'PLAYER'}</span><span data-testid={`admin-participant-weapon-${p.id}`}>{WEAPON_MAP[p.weapon]?.name || p.weapon}</span><span data-testid={`admin-participant-health-${p.id}`}>{Math.round(p.hp)}</span>",
+      "raw": "        <span data-testid={`admin-participant-name-${p.id}`}>{p.bot ? <Bot size={16} /> : <UserRound size={16} />}{p.name}</span><span data-testid={`admin-participant-type-${p.id}`}>{p.bot ? 'BOT' : 'PLAYER'}</span><span data-testid={`admin-participant-weapon-${p.id}`}>{WEAPON_MAP[p.weapon]?.name || p.weapon}</span><span data-testid={`admin-participant-health-${p.id}`}>{Math.round(p.hp)}</span>"
+    }
+  ],
+  "frontend\\src\\components\\AdminPage.css": [
+    {
+      "line": 17,
+      "content": ".admin-bot-form{max-width:440px}.admin-bot-input-row{display:flex;gap:8px}.admin-bot-input-row input{min-width:0;width:90px;text-align:center;border:1px solid #94ab7955;background:#1c271e;color:#edf0e6;font:20px 'Barlow Condensed',sans-serif;border-radius:3px}.admin-bot-input-row button{min-height:44px;min-width:42px;display:flex;align-items:center;justify-content:center;gap:8px;background:#1c271e;border:1px solid #94ab7955;border-radius:3px;color:#d0dec2}.admin-bot-input-row .admin-apply{margin-left:8px;padding:0 18px;background:#d95845;border-color:#d95845;color:#fff;font:600 13px 'Barlow Condensed',sans-serif}.admin-bot-live{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px;font:9px 'JetBrains Mono',monospace;color:#c6d6b2}.admin-bot-live>span{color:#8d9b82}",
+      "raw": ".admin-bot-form{max-width:440px}.admin-bot-input-row{display:flex;gap:8px}.admin-bot-input-row input{min-width:0;width:90px;text-align:center;border:1px solid #94ab7955;background:#1c271e;color:#edf0e6;font:20px 'Barlow Condensed',sans-serif;border-radius:3px}.admin-bot-input-row button{min-height:44px;min-width:42px;display:flex;align-items:center;justify-content:center;gap:8px;background:#1c271e;border:1px solid #94ab7955;border-radius:3px;color:#d0dec2}.admin-bot-input-row .admin-apply{margin-left:8px;padding:0 18px;background:#d95845;border-color:#d95845;color:#fff;font:600 13px 'Barlow Condensed',sans-serif}.admin-bot-live{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px;font:9px 'JetBrains Mono',monospace;color:#c6d6b2}.admin-bot-live>span{color:#8d9b82}"
+    },
+    {
+      "line": 21,
+      "content": "@media(max-width:767px){.admin-header{padding:20px;gap:12px;flex-wrap:wrap}.admin-header a{font-size:22px}.admin-header>span{font-size:8px}.admin-header button{padding:8px}.admin-header button span{display:none}.admin-content{padding:34px 20px 56px}.admin-page-heading h1{font-size:40px}.admin-summary{grid-template-columns:1fr 1fr;gap:24px}.admin-summary strong{font-size:34px}.admin-boss-grid{grid-template-columns:1fr 1fr;gap:12px}.admin-boss{padding:20px 14px 14px}.admin-boss h3{font-size:21px}.admin-boss p{font-size:10px}.admin-world-row{grid-template-columns:1fr;gap:28px}.admin-section-heading{gap:12px}.admin-section-heading h2{font-size:16px}.admin-time-options button{flex:1;min-width:0}.admin-player-head,.admin-player-row{grid-template-columns:minmax(0,1.4fr) 45px minmax(0,1fr) 28px;gap:8px;font-size:10px}.admin-player-row>span:first-child{gap:6px}.admin-player-row>span:nth-child(2){font-size:8px}.admin-bot-input-row .admin-apply{padding:0 12px;margin-left:0}.admin-bot-input-row input{width:75px}.admin-footer{padding:20px;font-size:8px}.admin-login{margin:40px 0 90px}}",
+      "raw": "@media(max-width:767px){.admin-header{padding:20px;gap:12px;flex-wrap:wrap}.admin-header a{font-size:22px}.admin-header>span{font-size:8px}.admin-header button{padding:8px}.admin-header button span{display:none}.admin-content{padding:34px 20px 56px}.admin-page-heading h1{font-size:40px}.admin-summary{grid-template-columns:1fr 1fr;gap:24px}.admin-summary strong{font-size:34px}.admin-boss-grid{grid-template-columns:1fr 1fr;gap:12px}.admin-boss{padding:20px 14px 14px}.admin-boss h3{font-size:21px}.admin-boss p{font-size:10px}.admin-world-row{grid-template-columns:1fr;gap:28px}.admin-section-heading{gap:12px}.admin-section-heading h2{font-size:16px}.admin-time-options button{flex:1;min-width:0}.admin-player-head,.admin-player-row{grid-template-columns:minmax(0,1.4fr) 45px minmax(0,1fr) 28px;gap:8px;font-size:10px}.admin-player-row>span:first-child{gap:6px}.admin-player-row>span:nth-child(2){font-size:8px}.admin-bot-input-row .admin-apply{padding:0 12px;margin-left:0}.admin-bot-input-row input{width:75px}.admin-footer{padding:20px;font-size:8px}.admin-login{margin:40px 0 90px}}"
+    }
+  ],
+  "frontend\\src\\components\\BossMap.jsx": [
+    {
+      "line": 1,
+      "content": "import { Bot, Network, Bug, Flame, Navigation, LocateFixed, Timer } from 'lucide-react';",
+      "raw": "import { Bot, Network, Bug, Flame, Navigation, LocateFixed, Timer } from 'lucide-react';"
+    },
+    {
+      "line": 6,
+      "content": "export const BOSS_ICONS = { hansel: Bot, symbiote: Network, xenomorph: Bug, ash_titan: Flame };",
+      "raw": "export const BOSS_ICONS = { hansel: Bot, symbiote: Network, xenomorph: Bug, ash_titan: Flame };"
+    }
+  ],
+  "frontend\\src\\components\\RadialMenu.jsx": [
+    {
+      "line": 136,
+      "content": "{/* BOTTOM / AŞAĞI: CRAFTING */}",
+      "raw": "          {/* BOTTOM / AŞAĞI: CRAFTING */}"
+    }
+  ],
+  "backend\\.local_storage.json": [
+    {
+      "line": 1543,
+      "content": "\"nickname\": \"der König\"",
+      "raw": "          \"nickname\": \"der König\""
+    }
+  ],
+  "backend\\admin_routes.py": [
+    {
+      "line": 12,
+      "content": "bot: bool",
+      "raw": "    bot: bool"
+    },
+    {
+      "line": 50,
+      "content": "bots = sum(bool(p.get('bot')) for p in players)",
+      "raw": "        bots = sum(bool(p.get('bot')) for p in players)"
+    },
+    {
+      "line": 52,
+      "content": "'participants': [{**{k: p[k] for k in ('id', 'name', 'weapon', 'hp', 'score')}, 'bot': bool(p.get('bot'))} for p in players]}",
+      "raw": "                'participants': [{**{k: p[k] for k in ('id', 'name', 'weapon', 'hp', 'score')}, 'bot': bool(p.get('bot'))} for p in players]}"
+    }
+  ],
+  "backend\\bots.py": [
+    {
+      "line": 29,
+      "content": "bots = [p for p in game.players.values() if p.get('bot')]",
+      "raw": "    bots = [p for p in game.players.values() if p.get('bot')]"
+    },
+    {
+      "line": 34,
+      "content": "p = game.add_player({'name': nickname(game), 'weapon': 'glock18', 'skin': random.choice(['soldier', 'fbi', 'civilian', 'terrorist', 'gang_male', 'gang_female'])}, None, bot=True)",
+      "raw": "        p = game.add_player({'name': nickname(game), 'weapon': 'glock18', 'skin': random.choice(['soldier', 'fbi', 'civilian', 'terrorist', 'gang_male', 'gang_female'])}, None, bot=True)"
+    },
+    {
+      "line": 57,
+      "content": "bots = [p for p in game.players.values() if p.get('bot')]",
+      "raw": "    bots = [p for p in game.players.values() if p.get('bot')]"
+    }
+  ],
+  "backend\\engine.py": [
+    {
+      "line": 71,
+      "content": "if player.get('bot') or not self.save_progress or not player.get('account_id'):",
+      "raw": "        if player.get('bot') or not self.save_progress or not player.get('account_id'):"
+    },
+    {
+      "line": 111,
+      "content": "if player.get('bot'):",
+      "raw": "        if player.get('bot'):"
+    },
+    {
+      "line": 122,
+      "content": "if sum(not p.get('bot') for p in self.players.values()) >= 200:",
+      "raw": "            if sum(not p.get('bot') for p in self.players.values()) >= 200:"
+    },
+    {
+      "line": 125,
+      "content": "victim = next((p for p in self.players.values() if p.get('bot')), None)",
+      "raw": "                victim = next((p for p in self.players.values() if p.get('bot')), None)"
+    },
+    {
+      "line": 131,
+      "content": "def add_player(self, session, ws, bot=False):",
+      "raw": "    def add_player(self, session, ws, bot=False):"
+    },
+    {
+      "line": 141,
+      "content": "'bot': bot",
+      "raw": "            'bot': bot"
+    },
+    {
+      "line": 143,
+      "content": "if not bot:",
+      "raw": "        if not bot:"
+    },
+    {
+      "line": 152,
+      "content": "x, z = (0.0, 0.0) if not p.get('bot') else spawn_position(self)",
+      "raw": "        x, z = (0.0, 0.0) if not p.get('bot') else spawn_position(self)"
+    },
+    {
+      "line": 226,
+      "content": "if p.get('active_soldier_ids') and not p.get('bot') and not has_runtime_roster:",
+      "raw": "        if p.get('active_soldier_ids') and not p.get('bot') and not has_runtime_roster:"
+    },
+    {
+      "line": 613,
+      "content": "if not p.get('bot'):",
+      "raw": "                    if not p.get('bot'):"
+    },
+    {
+      "line": 617,
+      "content": "if not p.get('bot') and p.get('account_id'):",
+      "raw": "                        if not p.get('bot') and p.get('account_id'):"
+    }
+  ],
+  "backend\\game_settings.py": [
+    {
+      "line": 56,
+      "content": "bots = [p for p in game.players.values() if p.get('bot')]",
+      "raw": "    bots = [p for p in game.players.values() if p.get('bot')]"
+    }
+  ],
+  "backend\\server.py": [
+    {
+      "line": 39,
+      "content": "if player['score'] <= 0 or player.get('bot'):",
+      "raw": "    if player['score'] <= 0 or player.get('bot'):"
+    },
+    {
+      "line": 51,
+      "content": "if not account_id or player.get('bot'):",
+      "raw": "    if not account_id or player.get('bot'):"
+    },
+    {
+      "line": 103,
+      "content": "await asyncio.gather(*(p['channel'].stop() for p in list(game.players.values()) if not p.get('bot')))",
+      "raw": "    await asyncio.gather(*(p['channel'].stop() for p in list(game.players.values()) if not p.get('bot')))"
+    },
+    {
+      "line": 162,
+      "content": "'coalesced_states': sum(p['channel'].coalesced for p in game.players.values() if not p.get('bot'))}",
+      "raw": "            'coalesced_states': sum(p['channel'].coalesced for p in game.players.values() if not p.get('bot'))}"
+    },
+    {
+      "line": 478,
+      "content": "if sum(not p.get('bot') for p in game.players.values()) >= 200 or len(pending) >= 600:",
+      "raw": "    if sum(not p.get('bot') for p in game.players.values()) >= 200 or len(pending) >= 600:"
+    },
+    {
+      "line": 516,
+      "content": "if not session or session['expires'] < time.monotonic() or sum(not p.get('bot') for p in game.players.values()) >= 200:",
+      "raw": "    if not session or session['expires'] < time.monotonic() or sum(not p.get('bot') for p in game.players.values()) >= 200:"
+    }
+  ],
+  "backend\\.local-backups\\pre-boss-territory-restart.json": [
+    {
+      "line": 1522,
+      "content": "\"nickname\": \"der König\"",
+      "raw": "          \"nickname\": \"der König\""
+    }
+  ],
+  "backend\\tests\\test_backend_short_smoke.py": [
+    {
+      "line": 1,
+      "content": "\"\"\"Kısa odaklı DEADZONE backend smoke + birim testleri (uzun e2e yok).\"\"\"",
+      "raw": "\"\"\"Kısa odaklı DEADZONE backend smoke + birim testleri (uzun e2e yok).\"\"\""
+    }
+  ],
+  "backend\\tests\\test_iteration5_admin_inventory_world.py": [
+    {
+      "line": 1,
+      "content": "\"\"\"Iteration-5 focused tests: admin auth/origin/rate-limit + inventory/world/bot integrations.\"\"\"",
+      "raw": "\"\"\"Iteration-5 focused tests: admin auth/origin/rate-limit + inventory/world/bot integrations.\"\"\""
+    },
+    {
+      "line": 378,
+      "content": "\"\"\"Module: world settings propagation + bot count/admin status integrity + restore.\"\"\"",
+      "raw": "    \"\"\"Module: world settings propagation + bot count/admin status integrity + restore.\"\"\""
+    },
+    {
+      "line": 423,
+      "content": "bot_names = [p[\"name\"] for p in participants if p.get(\"bot\")]",
+      "raw": "            bot_names = [p[\"name\"] for p in participants if p.get(\"bot\")]"
+    }
+  ],
+  "backend\\tests\\test_iteration6_game_unit_focus.py": [
+    {
+      "line": 1,
+      "content": "\"\"\"Iteration-6 deterministic unit tests for combat, respawn, settings, spawning, and bot mechanics.\"\"\"",
+      "raw": "\"\"\"Iteration-6 deterministic unit tests for combat, respawn, settings, spawning, and bot mechanics.\"\"\""
+    },
+    {
+      "line": 107,
+      "content": "bot = game.add_player({\"name\": \"BOT1\", \"weapon\": \"ak47\", \"skin\": \"fbi\"}, None, bot=True)",
+      "raw": "    bot = game.add_player({\"name\": \"BOT1\", \"weapon\": \"ak47\", \"skin\": \"fbi\"}, None, bot=True)"
+    },
+    {
+      "line": 108,
+      "content": "bot[\"hp\"] = 0",
+      "raw": "    bot[\"hp\"] = 0"
+    },
+    {
+      "line": 109,
+      "content": "bot[\"died_at\"] = 100.0",
+      "raw": "    bot[\"died_at\"] = 100.0"
+    },
+    {
+      "line": 110,
+      "content": "old_id = bot[\"id\"]",
+      "raw": "    old_id = bot[\"id\"]"
+    },
+    {
+      "line": 113,
+      "content": "assert game.respawn(bot) is False",
+      "raw": "    assert game.respawn(bot) is False"
+    },
+    {
+      "line": 114,
+      "content": "assert bot[\"id\"] == old_id",
+      "raw": "    assert bot[\"id\"] == old_id"
+    },
+    {
+      "line": 117,
+      "content": "assert game.respawn(bot) is True",
+      "raw": "    assert game.respawn(bot) is True"
+    },
+    {
+      "line": 118,
+      "content": "assert bot[\"id\"] != old_id",
+      "raw": "    assert bot[\"id\"] != old_id"
+    },
+    {
+      "line": 119,
+      "content": "assert bot[\"hp\"] == 100",
+      "raw": "    assert bot[\"hp\"] == 100"
+    },
+    {
+      "line": 120,
+      "content": "assert bot[\"weapon\"] == \"glock18\"",
+      "raw": "    assert bot[\"weapon\"] == \"glock18\""
+    },
+    {
+      "line": 121,
+      "content": "assert set(bot[\"inventory\"].keys()) == set(WEAPONS.keys())",
+      "raw": "    assert set(bot[\"inventory\"].keys()) == set(WEAPONS.keys())"
+    },
+    {
+      "line": 122,
+      "content": "assert free(bot[\"x\"], bot[\"z\"])",
+      "raw": "    assert free(bot[\"x\"], bot[\"z\"])"
+    },
+    {
+      "line": 302,
+      "content": "# Module: bot naming/cap computation and cleanup (no live 200 spawn load)",
+      "raw": "# Module: bot naming/cap computation and cleanup (no live 200 spawn load)"
+    },
+    {
+      "line": 309,
+      "content": "bot1 = game.add_player({\"name\": \"BotSeed1\", \"weapon\": \"glock18\", \"skin\": \"soldier\"}, None, bot=True)",
+      "raw": "    bot1 = game.add_player({\"name\": \"BotSeed1\", \"weapon\": \"glock18\", \"skin\": \"soldier\"}, None, bot=True)"
+    },
+    {
+      "line": 310,
+      "content": "bot2 = game.add_player({\"name\": \"BotSeed2\", \"weapon\": \"glock18\", \"skin\": \"soldier\"}, None, bot=True)",
+      "raw": "    bot2 = game.add_player({\"name\": \"BotSeed2\", \"weapon\": \"glock18\", \"skin\": \"soldier\"}, None, bot=True)"
+    },
+    {
+      "line": 323,
+      "content": "def _fake_add_player(_session, _ws, bot=False):",
+      "raw": "    def _fake_add_player(_session, _ws, bot=False):"
+    },
+    {
+      "line": 325,
+      "content": "return {\"id\": f\"b{calls['added']}\", \"name\": f\"B{calls['added']}\", \"bot\": bot, \"brain_at\": 0}",
+      "raw": "        return {\"id\": f\"b{calls['added']}\", \"name\": f\"B{calls['added']}\", \"bot\": bot, \"brain_at\": 0}"
+    },
+    {
+      "line": 333,
+      "content": "# Module: dead bots auto-respawn after 10s and snapshot keeps bot flag private",
+      "raw": "# Module: dead bots auto-respawn after 10s and snapshot keeps bot flag private"
+    },
+    {
+      "line": 340,
+      "content": "other_bot[\"bot\"] = True",
+      "raw": "    other_bot[\"bot\"] = True"
+    },
+    {
+      "line": 355,
+      "content": "assert all(\"bot\" not in actor for actor in snapshot[\"players\"])",
+      "raw": "    assert all(\"bot\" not in actor for actor in snapshot[\"players\"])"
+    },
+    {
+      "line": 358,
+      "content": "# Module: bot add stagger (2 per 250ms) and immediate removal on lower target",
+      "raw": "# Module: bot add stagger (2 per 250ms) and immediate removal on lower target"
+    },
+    {
+      "line": 367,
+      "content": "def _fake_add_player(_session, _ws, bot=False):",
+      "raw": "    def _fake_add_player(_session, _ws, bot=False):"
+    },
+    {
+      "line": 370,
+      "content": "created = _player(pid, name=f\"Bot{seq['n']}\")",
+      "raw": "        created = _player(pid, name=f\"Bot{seq['n']}\")"
+    },
+    {
+      "line": 371,
+      "content": "created[\"bot\"] = bot",
+      "raw": "        created[\"bot\"] = bot"
+    },
+    {
+      "line": 381,
+      "content": "assert sum(1 for p in game.players.values() if p.get(\"bot\")) == 2",
+      "raw": "    assert sum(1 for p in game.players.values() if p.get(\"bot\")) == 2"
+    },
+    {
+      "line": 384,
+      "content": "assert sum(1 for p in game.players.values() if p.get(\"bot\")) == 2",
+      "raw": "    assert sum(1 for p in game.players.values() if p.get(\"bot\")) == 2"
+    },
+    {
+      "line": 387,
+      "content": "assert sum(1 for p in game.players.values() if p.get(\"bot\")) == 3",
+      "raw": "    assert sum(1 for p in game.players.values() if p.get(\"bot\")) == 3"
+    },
+    {
+      "line": 391,
+      "content": "assert sum(1 for p in game.players.values() if p.get(\"bot\")) == 0",
+      "raw": "    assert sum(1 for p in game.players.values() if p.get(\"bot\")) == 0"
+    },
+    {
+      "line": 401,
+      "content": "game.players['b'] = {**_player('b'), 'bot': True}",
+      "raw": "            game.players['b'] = {**_player('b'), 'bot': True}"
+    },
+    {
+      "line": 408,
+      "content": "assert sum(not p.get('bot') for p in game.players.values()) == 199",
+      "raw": "            assert sum(not p.get('bot') for p in game.players.values()) == 199"
+    },
+    {
+      "line": 418,
+      "content": "assert sum(not p.get('bot') for p in game.players.values()) == 200",
+      "raw": "        assert sum(not p.get('bot') for p in game.players.values()) == 200"
+    },
+    {
+      "line": 448,
+      "content": "p = game.add_player({'name': 'RavenRidge', 'skin': 'fbi'}, None, bot=True)",
+      "raw": "    p = game.add_player({'name': 'RavenRidge', 'skin': 'fbi'}, None, bot=True)"
+    }
+  ],
+  "backend\\tests\\test_live_ws_focus.py": [
+    {
+      "line": 1,
+      "content": "\"\"\"Module: public API + gerçek websocket akışında seq/ack/ping ve kısa çoklu istemci örneklemi.\"\"\"",
+      "raw": "\"\"\"Module: public API + gerçek websocket akışında seq/ack/ping ve kısa çoklu istemci örneklemi.\"\"\""
+    }
+  ],
+  "backend\\tests\\test_network_channel_focus.py": [
+    {
+      "line": 1,
+      "content": "\"\"\"Module: network.ClientChannel + engine tick isolation kısa odaklı testler.\"\"\"",
+      "raw": "\"\"\"Module: network.ClientChannel + engine tick isolation kısa odaklı testler.\"\"\""
+    }
+  ],
+  "backend\\tests\\test_skin_ws_contract.py": [
+    {
+      "line": 1,
+      "content": "\"\"\"Skin seçim ve websocket senkronizasyon sözleşmesi testleri.\"\"\"",
+      "raw": "\"\"\"Skin seçim ve websocket senkronizasyon sözleşmesi testleri.\"\"\""
+    },
+    {
+      "line": 73,
+      "content": "# Module: /api/join skin doğrulama + varsayılan skin davranışı",
+      "raw": "# Module: /api/join skin doğrulama + varsayılan skin davranışı"
+    },
+    {
+      "line": 95,
+      "content": "# Module: gerçek iki websocket istemcide skin senkronizasyonu + shot/kill/respawn sözleşmesi",
+      "raw": "# Module: gerçek iki websocket istemcide skin senkronizasyonu + shot/kill/respawn sözleşmesi"
+    },
+    {
+      "line": 103,
+      "content": "# Her iki istemci de karşı oyuncunun skin bilgisini görmeli.",
+      "raw": "            # Her iki istemci de karşı oyuncunun skin bilgisini görmeli."
+    },
+    {
+      "line": 115,
+      "content": "# Yerel skin doğrulaması.",
+      "raw": "            # Yerel skin doğrulaması."
+    },
+    {
+      "line": 119,
+      "content": "# Oyuncu 1 ateş edince oyuncu 2 bunu event/firing olarak görmeli.",
+      "raw": "            # Oyuncu 1 ateş edince oyuncu 2 bunu event/firing olarak görmeli."
+    },
+    {
+      "line": 142,
+      "content": "# PvP için iki oyuncunun da korumasını kaldır.",
+      "raw": "            # PvP için iki oyuncunun da korumasını kaldır."
+    },
+    {
+      "line": 146,
+      "content": "# Oyuncu 1, oyuncu 2'yi hedefleyip öldürsün.",
+      "raw": "            # Oyuncu 1, oyuncu 2'yi hedefleyip öldürsün."
+    },
+    {
+      "line": 171,
+      "content": "# Respawn sonrası me.skin ve me.weapon korunmalı.",
+      "raw": "            # Respawn sonrası me.skin ve me.weapon korunmalı."
+    }
+  ],
+  "backend\\tests\\test_soldier_energy_focus.py": [
+    {
+      "line": 88,
+      "content": "assert ok and record['nickname'] == 'Ümit' and record['runtime'] == before",
+      "raw": "    assert ok and record['nickname'] == 'Ümit' and record['runtime'] == before"
+    }
+  ]
+}

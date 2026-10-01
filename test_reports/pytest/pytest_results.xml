@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="5" skipped="1" tests="7" time="4.479" timestamp="2026-09-26T14:07:54.053944+00:00" hostname="agent-env-8e13b5ee-f7a6-4f81-8bee-07963963ac2a"><testcase classname="tests.test_iteration5_admin_inventory_world" name="test_admin_unauthorized_and_hash_format_and_indexes" time="0.252"><skipped type="pytest.skip" message="MONGO_URL format is not directly consumable in this runner">/app/backend/tests/test_iteration5_admin_inventory_world.py:134: MONGO_URL format is not directly consumable in this runner</skipped></testcase><testcase classname="tests.test_iteration5_admin_inventory_world" name="test_admin_login_cookie_flags_invalid_and_origin_guard_and_refresh_logout_revocation" time="0.533"><failure message="assert 429 == 200&#10; +  where 429 = &lt;Response [429]&gt;.status_code">backend/tests/test_iteration5_admin_inventory_world.py:164: in test_admin_login_cookie_flags_invalid_and_origin_guard_and_refresh_logout_revocation
+    assert ok.status_code == 200
+E   assert 429 == 200
+E    +  where 429 = &lt;Response [429]&gt;.status_code</failure></testcase><testcase classname="tests.test_iteration5_admin_inventory_world" name="test_admin_settings_validation_and_origin_csrf_rules_and_restore" time="0.161"><failure message="assert 429 == 200&#10; +  where 429 = &lt;Response [429]&gt;.status_code">backend/tests/test_iteration5_admin_inventory_world.py:193: in test_admin_settings_validation_and_origin_csrf_rules_and_restore
+    assert login.status_code == 200
+E   assert 429 == 200
+E    +  where 429 = &lt;Response [429]&gt;.status_code</failure></testcase><testcase classname="tests.test_iteration5_admin_inventory_world" name="test_admin_rate_limit_5_fails_then_429_and_cleanup" time="0.458"><failure message="AssertionError: assert [429, 429, 429, 429, 429] == [401, 401, 401, 401, 401]&#10;  &#10;  At index 0 diff: 429 != 401&#10;  &#10;  Full diff:&#10;    [&#10;  -     401,&#10;  ?      ^^...&#10;  &#10;  ...Full output truncated (19 lines hidden), use '-vv' to show">backend/tests/test_iteration5_admin_inventory_world.py:252: in test_admin_rate_limit_5_fails_then_429_and_cleanup
+    assert statuses[:5] == [401, 401, 401, 401, 401]
+E   AssertionError: assert [429, 429, 429, 429, 429] == [401, 401, 401, 401, 401]
+E     
+E     At index 0 diff: 429 != 401
+E     
+E     Full diff:
+E       [
+E     -     401,
+E     ?      ^^...
+E     
+E     ...Full output truncated (19 lines hidden), use '-vv' to show</failure></testcase><testcase classname="tests.test_iteration5_admin_inventory_world" name="test_join_defaults_to_glock_and_inventory_has_all_slots" time="0.477" /><testcase classname="tests.test_iteration5_admin_inventory_world" name="test_equip_flow_switching_preserves_per_slot_ammo_and_invalid_payload_denied" time="2.220"><failure message="assert 23 == 29">backend/tests/test_iteration5_admin_inventory_world.py:366: in test_equip_flow_switching_preserves_per_slot_ammo_and_invalid_payload_denied
+    asyncio.run(_flow())
+/usr/local/lib/python3.11/asyncio/runners.py:190: in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.11/asyncio/runners.py:118: in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.11/asyncio/base_events.py:654: in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+backend/tests/test_iteration5_admin_inventory_world.py:350: in _flow
+    assert s["me"]["ammo"] == m4_after_fire
+E   assert 23 == 29</failure></testcase><testcase classname="tests.test_iteration5_admin_inventory_world" name="test_time_of_day_and_bot_counts_visible_in_admin_status_and_ws" time="0.179"><failure message="assert 429 == 200&#10; +  where 429 = &lt;Response [429]&gt;.status_code">backend/tests/test_iteration5_admin_inventory_world.py:373: in test_time_of_day_and_bot_counts_visible_in_admin_status_and_ws
+    assert login.status_code == 200
+E   assert 429 == 200
+E    +  where 429 = &lt;Response [429]&gt;.status_code</failure></testcase></testsuite></testsuites>

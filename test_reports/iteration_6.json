@@ -1,0 +1,66 @@
+{
+  "summary": "Executed requested serial regression and new deterministic unit coverage. Admin UI desktop/mobile flow (login, 4 boss toggles, day/night, density, bot apply 3->0, list visibility, logout) passed on public URL with settings restored.",
+  "backend_issues": {
+    "critical": [
+      {
+        "endpoint": "/api/ws/{token}",
+        "issue": "Potential total-cap race: websocket checks human count before await ws.accept, then evicts bot after accept; concurrent human joins around 199 humans can exceed total 200 when no bot remains for second join.",
+        "priority": "CRITICAL"
+      }
+    ],
+    "minor": [
+      {
+        "endpoint": "spawn_position()",
+        "issue": "Spawn candidate grid currently yields 361 intersection points (19x19), not 400 as requested." 
+      },
+      {
+        "endpoint": "bots.nickname",
+        "issue": "Nickname pool uses English-style FIRST/LAST combinations; does not fully match 'foreign fiction nickname' requirement wording."
+      }
+    ]
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": [
+      {
+        "screen": "Admin page desktop/mobile",
+        "issues": [
+          "No horizontal overflow at 1920x800 and 390x844; vertical overflow exists by design due to long settings page content."
+        ]
+      }
+    ]
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_iteration5_admin_inventory_world.py",
+    "/app/backend/tests/test_iteration6_game_unit_focus.py",
+    "/app/tests/frontend_network_worker_focus.cjs",
+    "/app/test_reports/pytest/iteration6_existing_suite.xml",
+    "/app/test_reports/pytest/iteration6_unit_suite.xml",
+    "/app/test_reports/pytest/iteration6_combined.xml"
+  ],
+  "action_items": [
+    "Make websocket admission+bot-eviction atomic to guarantee total <= 200 under concurrent joins.",
+    "Align spawn-candidate implementation with requested 400-point spread if product requirement is strict.",
+    "Confirm/adjust bot nickname source list to satisfy requested foreign-fiction naming policy."
+  ],
+  "critical_code_review_comments": [
+    "server.py websocket capacity guard has an await boundary between pre-check and final player insertion; this can violate hard total-cap guarantees under concurrency.",
+    "Capacity logic mixes human-precheck and post-accept bot eviction; guard should be centralized with a single lock/transactional section.",
+    "Current implementation correctly keeps bot flag out of public actor snapshot and exposes bot identity only in admin status participants."
+  ],
+  "updated_files": [
+    "/app/backend/tests/test_iteration6_game_unit_focus.py",
+    "/app/test_reports/iteration_6.json"
+  ],
+  "success_rate": {
+    "backend": "100% (19/19 passed across iteration5+iteration6 suites)",
+    "frontend": "100% for requested admin UI + frontend worker scope"
+  },
+  "seed_data_creation": "No persistent seed data created.",
+  "retest_needed": true,
+  "should_main_agent_self_test": true,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "Admin settings were restored to baseline after UI run (all bosses active, day, normal, bot_count 0). Auth cookies and origin/csrf/rate-limit regression remain green in serial suite. Focus next on fixing/verifying websocket total-cap race under concurrent joins.",
+  "rca of the issue": "RCA (total-cap race): In websocket(), human-cap is checked before await ws.accept and prior to add_player. Concurrent joins can both pass precheck at 199 humans; first may evict a bot and add human, second may then add another human without available bot to evict, temporarily allowing >200 total. Mitigation: guard admission in a shared async lock and re-check+evict+insert atomically, or reserve slot at /join and commit/rollback at ws connect."
+}

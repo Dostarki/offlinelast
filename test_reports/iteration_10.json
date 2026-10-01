@@ -1,0 +1,74 @@
+{
+  "summary": "Executed requested backend+frontend regression scope for Glock18 infinite reserve, persistence queue CAS, updated HUD/Inventory/renderer/useSession tests, and external join+WS paid-access flow. Targeted backend (40/40) and targeted frontend Jest (15/15) passed; real browser wallet gameplay run was blocked by a runtime crash during wallet-connect flow.",
+  "backend_issues": {
+    "critical": [
+      {
+        "endpoint": "WebSocket disconnect/reconnect persistence chain",
+        "issue": "backend.err.log still shows unhandled asyncio task exception RuntimeError('progress_revision_conflict') from Game.persist_progress.save_in_order in some reconnect/disconnect races.",
+        "priority": "HIGH"
+      }
+    ],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [
+      {
+        "component": "Wallet connect / app root",
+        "issue": "Runtime overlay crash after Start Game -> Connect Wallet -> MetaMask path: 'invalid border=0' (page error), blocking SIWE button rendering and gameplay entry.",
+        "selector": "[data-testid='wallet-connect-btn'] / MetaMask option",
+        "priority": "CRITICAL"
+      }
+    ],
+    "integration_issues": [
+      {
+        "flow": "Real browser injected-wallet gameplay (connect/sign/join/HUD/inventory/rejoin)",
+        "issue": "Could not complete because runtime crash occurs before SIWE step; gameplay HUD/inventory/rejoin mobile checks blocked in real browser path.",
+        "affected_selectors": [
+          "[data-testid='wallet-siwe-btn']",
+          "[data-testid='join-game-button']",
+          "[data-testid='game-hud']"
+        ]
+      }
+    ],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_ammo_infinite_reserve_regression.py",
+    "/app/backend/tests/test_progress_queue_regression.py",
+    "/app/backend/tests/test_join_ws_paid_access_external.py",
+    "/app/frontend/src/hooks/useSession.test.jsx",
+    "/app/frontend/src/components/ammo_display.test.jsx",
+    "/app/frontend/src/game/renderer.requestReload.test.jsx",
+    "/app/test_reports/pytest/iteration_10_backend_targeted.xml"
+  ],
+  "action_items": [
+    "Investigate and fix frontend runtime crash 'invalid border=0' triggered in wallet connect MetaMask path; this currently blocks real browser gameplay verification.",
+    "Stabilize reconnect/disconnect persistence tail handling so progress_revision_conflict is handled as expected race, not unhandled task exception in runtime logs.",
+    "After frontend runtime fix, re-run full external injected-wallet gameplay (connect/sign/join/HUD inventory Glock ∞ + AK numeric, leave/rejoin, desktop/mobile overflow checks)."
+  ],
+  "critical_code_review_comments": [
+    "New ammo behavior is well-covered via focused regression tests: Glock18 infinite reserve keeps 17-round magazine and finite weapons remain finite with zero-reserve guard + partial refill behavior.",
+    "Persistence queue tests validate immutable queued snapshots and revision progression chain (1->2->3->4 live), including stale external writer rejection without reward overwrite.",
+    "Real-browser wallet path currently has a frontend runtime blocker independent of backend endpoint health."
+  ],
+  "updated_files": [
+    "/app/backend/tests/test_ammo_infinite_reserve_regression.py",
+    "/app/backend/tests/test_progress_queue_regression.py",
+    "/app/backend/tests/test_join_ws_paid_access_external.py",
+    "/app/frontend/src/hooks/useSession.test.jsx",
+    "/app/frontend/src/components/ammo_display.test.jsx",
+    "/app/frontend/src/game/renderer.requestReload.test.jsx",
+    "/app/tests/seed_browser_wallet.py",
+    "/app/tests/cleanup_browser_wallet.py",
+    "/app/test_reports/iteration_10.json"
+  ],
+  "success_rate": {
+    "backend": "100% (40/40 targeted pytest)",
+    "frontend": "80% (15/15 targeted Jest passed, real browser wallet gameplay blocked by runtime crash)"
+  },
+  "seed_data_creation": "Created TEST-ONLY disposable wallet records for browser attempt (account/progress/access entitlement) and then cleaned them via /app/tests/cleanup_browser_wallet.py with sync_db_to_file.",
+  "retest_needed": true,
+  "should_main_agent_self_test": false,
+  "context_for_next_testing_agent": "Backend targeted suites are green with new regression files. External /api/join + WS test now seeds legacy non-empty weapon_parts tiers (1/2/3) and validates persistence after movement and rejoin. Browser injected-wallet run failed at runtime crash ('invalid border=0') after MetaMask selection, so SIWE/join/HUD checks could not complete in-browser.",
+  "rca of the issue": "Repro (browser): open preview -> START GAME -> wallet connect -> MetaMask option. Immediately after this step, page throws runtime error 'invalid border=0' and Emergent runtime overlay appears; SIWE button does not become available. This prevents entering play and blocks downstream real-game assertions (HUD/inventory/rejoin/mobile checks). Potential mitigation: inspect UI node style/prop assignment around wallet modal/render path where invalid border value can be introduced; reproduce locally with same wallet-connect sequence and console stack."
+}
